@@ -3,7 +3,7 @@ import {useState} from "react";
 
 function MyApp({Component, pageProps}) {
   const [loginName, setLoginName] = useState("Enter user name ... ");
-  const onSubmitLogin = (loginNameParam) => {
+  const onSubmitLogin = loginNameParam => {
     setLoginName(loginNameParam);
   };
 
