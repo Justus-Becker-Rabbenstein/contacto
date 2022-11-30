@@ -15,7 +15,7 @@ export default function Home({loginName, onSubmitLogin}) {
         />
       </ContainerForm>
       <ContainerButton>
-        <Link href="/myContacts/myContacts">Submit</Link>
+        <Link href="/myContacts">Submit</Link>
       </ContainerButton>
     </ContainerDiv>
   );
@@ -46,8 +46,9 @@ const ContainerForm = styled.form`
 `;
 
 const ContainerInput = styled.input`
-  background-image: url("name-icon.svg");
+  background-image: url("icon_name.svg");
   background-repeat: no-repeat;
-  background-position: 10px;
+  background-position: left;
+  background-size: contain;
   padding-left: 40px;
 `;
