@@ -3,11 +3,11 @@ import Home from "../pages/index";
 import "@testing-library/jest-dom";
 
 describe("Home", () => {
-  it("renders an octopus", () => {
+  it("checks if heading one displays login page", () => {
     render(<Home />);
 
     const heading = screen.getByRole("heading", {
-      name: /🐙/i,
+      name: "Login",
     });
 
     expect(heading).toBeInTheDocument();
