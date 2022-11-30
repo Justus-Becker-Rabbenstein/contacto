@@ -5,18 +5,10 @@ const GlobalStyles = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        font-family: 'Roboto', sans-serif;
-        background-image: url('pawel-czerwinski-HbcfaO4m03s-unsplash.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
     * {
         box-sizing: border-box;
-    }
-    button {
-        background-color: #001533;
-        color: #D9D9D9;
-        border-radius: 9px;
     }
 `;
 
