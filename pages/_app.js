@@ -1,8 +1,8 @@
 import GlobalStyles from "../styles/GlobalStyles";
 import {useState} from "react";
 import {dbArray} from "../_db/dbArray";
-import Footer from "../components/Footer/Footer"
-import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
 
 function MyApp({Component, pageProps}) {
   /* Start: Logic for Login credential saving */
