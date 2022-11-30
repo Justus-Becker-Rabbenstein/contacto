@@ -1,6 +1,6 @@
 import GlobalStyles from "../styles/GlobalStyles";
 import {useState} from "react";
-import {dbArray} from "./_db/dbArray";
+import {dbArray} from "../_db/dbArray";
 
 function MyApp({Component, pageProps}) {
   /* Start: Logic for Login credential saving */
