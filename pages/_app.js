@@ -23,7 +23,7 @@ function MyApp({Component, pageProps}) {
       <Component
         {...pageProps}
         loginName={loginName}
-        handleSubmitLogin={handleSubmitLogin}
+        onSubmitLogin={handleSubmitLogin}
         userArray={userArray}
       />
     </>
