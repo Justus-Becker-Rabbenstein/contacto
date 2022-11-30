@@ -7,14 +7,15 @@ const myContacts = ({userArray}) => {
      {userArray.map((singleUser)=>{
        return (
         <ContainerSection>
+          <ContainerImg src={singleUser.image} alt={singleUser.name} height="50vh" width="50vw" />
           <ContainerHeader>
             <h3>{singleUser.name}</h3>
           </ContainerHeader>
-          <ContainerInputItemName value={singleUser.name} />
-          <ContainerInputItemAddress value={singleUser.address} />
-          <ContainerInputItemEmail value={singleUser.email} />
-          <ContainerInputItemPhone value={singleUser.phone} />
-          <ContainerInputItemWebsite value={singleUser.website} />
+        <ContainerName><img src="icon_name.svg" alt="Icon of name" /><p>{singleUser.name}</p></ContainerName>
+        <ContainerAddress><img src="icon_address.svg" alt="Icon of address" /><p>{singleUser.address}</p></ContainerAddress>
+        <ContainerEmail><img src="icon_email.svg" alt="Icon of email" /><p>{singleUser.email}</p></ContainerEmail>
+        <ContainerPhone><img src="icon_phone.svg" alt="Icon of phone" /><p>{singleUser.phone}</p></ContainerPhone>
+        <ContainerWebsite><img src="icon_website.svg" alt="Icon of website" /><p>{singleUser.website}</p></ContainerWebsite>
         </ContainerSection>
        )
      })}
@@ -30,77 +31,43 @@ grid-template-columns: 20% 60% 20%;
 grid-template-rows: auto;
 gap: 3px;
 border-radius: 10px;
-width: 60%;
+width: 50vw;
 margin: 10px auto;
 background-image: url('isis-franca-4uZXCWaseNE-unsplash.jpg');
 background-size: cover;
+`
+const ContainerImg = styled.img`
+grid-column: 3;
+grid-row: 1;
+position: relative;
+right: -10px;
+border-radius: 100%;
 `
 const ContainerHeader = styled.header`
 grid-column: 2;
 grid-row: 1;
 border-radius: 10px;
 `
-//Variable for all Inputs
-const inputBorder = "1px solid #001533";
-const inputBorderRadius = "10px";
-const inputBackgroundRepeat = "no-repeat";
-const inputBackgroundPosition = "left";
-const inputBackgroundSize = "contain";
-const inputPaddingLeft = "25px";
-
-const ContainerInputItemName = styled.input`
+const ContainerName = styled.div`
 grid-column: 2;
 grid-row: 2;
-border: ${inputBorder};
-border-radius: ${inputBorderRadius};
-background-image: url("icon_name.svg");
-background-repeat: ${inputBackgroundRepeat};
-background-position: ${inputBackgroundPosition};
-background-size: ${inputBackgroundSize};
-padding-left: ${inputPaddingLeft};
+width: 10%;
+
 `
-const ContainerInputItemAddress = styled.input`
+const ContainerAddress = styled.div`
 grid-column: 2;
 grid-row: 3;
-border: ${inputBorder};
-border-radius: ${inputBorderRadius};
-background-image: url("icon_address.svg");
-background-repeat: ${inputBackgroundRepeat};
-background-position: ${inputBackgroundPosition};
-background-size: ${inputBackgroundSize};
-padding-left: ${inputPaddingLeft};
 `
-const ContainerInputItemEmail = styled.input`
+const ContainerEmail = styled.div`
 grid-column: 2;
 grid-row: 4;
-border: ${inputBorder};
-border-radius: ${inputBorderRadius};
-background-image: url("icon_email.svg");
-background-repeat: ${inputBackgroundRepeat};
-background-position: ${inputBackgroundPosition};
-background-size: ${inputBackgroundSize};
-padding-left: ${inputPaddingLeft};
 `
-const ContainerInputItemPhone = styled.input`
+const ContainerPhone = styled.div`
 grid-column: 2;
 grid-row: 5;
-border: ${inputBorder};
-border-radius: ${inputBorderRadius};
-background-image: url("icon_phone.svg");
-background-repeat: ${inputBackgroundRepeat};
-background-position: ${inputBackgroundPosition};
-background-size: ${inputBackgroundSize};
-padding-left: ${inputPaddingLeft};
 `
-const ContainerInputItemWebsite = styled.input`
+const ContainerWebsite = styled.div`
 grid-column: 2;
 grid-row: 6;
 margin-bottom: 10px;
-border: ${inputBorder};
-border-radius: ${inputBorderRadius};
-background-image: url("icon_website.svg");
-background-repeat: ${inputBackgroundRepeat};
-background-position: ${inputBackgroundPosition};
-background-size: ${inputBackgroundSize};
-padding-left: ${inputPaddingLeft};
 `
