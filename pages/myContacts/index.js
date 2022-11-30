@@ -8,39 +8,37 @@ const myContacts = ({userArray}) => {
       </header>
       {userArray.map(singleUser => {
         return (
-          <>
-            <ContainerSection>
-              <ContainerProfileImage
-                src={singleUser.image}
-                alt={singleUser.name}
-                height="50vh"
-                width="50vw"
-              />
-              <ContainerHeader>
-                <h3>{singleUser.name}</h3>
-              </ContainerHeader>
-              <Container>
-                <ContainerIcon src="icon_name.svg" alt="Icon of name" />
-                <ContainerParagraph>{singleUser.name}</ContainerParagraph>
-              </Container>
-              <Container>
-                <ContainerIcon src="icon_address.svg" alt="Icon of address" />
-                <ContainerParagraph>{singleUser.address}</ContainerParagraph>
-              </Container>
-              <Container>
-                <ContainerIcon src="icon_email.svg" alt="Icon of email" />
-                <ContainerParagraph>{singleUser.email}</ContainerParagraph>
-              </Container>
-              <Container>
-                <ContainerIcon src="icon_phone.svg" alt="Icon of phone" />
-                <ContainerParagraph>{singleUser.phone}</ContainerParagraph>
-              </Container>
-              <Container>
-                <ContainerIcon src="icon_website.svg" alt="Icon of website" />
-                <ContainerParagraph>{singleUser.website}</ContainerParagraph>
-              </Container>
-            </ContainerSection>
-          </>
+          <ContainerSection key={`key-section-${singleUser.id}`}>
+            <ContainerProfileImage
+              src={singleUser.image}
+              alt={singleUser.name}
+              height="50vh"
+              width="50vw"
+            />
+            <ContainerHeader>
+              <h3>{singleUser.name}</h3>
+            </ContainerHeader>
+            <Container>
+              <ContainerIcon src="icon_name.svg" alt="Icon of name" />
+              <ContainerParagraph>{singleUser.name}</ContainerParagraph>
+            </Container>
+            <Container>
+              <ContainerIcon src="icon_address.svg" alt="Icon of address" />
+              <ContainerParagraph>{singleUser.address}</ContainerParagraph>
+            </Container>
+            <Container>
+              <ContainerIcon src="icon_email.svg" alt="Icon of email" />
+              <ContainerParagraph>{singleUser.email}</ContainerParagraph>
+            </Container>
+            <Container>
+              <ContainerIcon src="icon_phone.svg" alt="Icon of phone" />
+              <ContainerParagraph>{singleUser.phone}</ContainerParagraph>
+            </Container>
+            <Container>
+              <ContainerIcon src="icon_website.svg" alt="Icon of website" />
+              <ContainerParagraph>{singleUser.website}</ContainerParagraph>
+            </Container>
+          </ContainerSection>
         );
       })}
     </article>

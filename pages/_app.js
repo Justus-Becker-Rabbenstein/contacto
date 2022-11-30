@@ -12,6 +12,9 @@ function MyApp({Component, pageProps}) {
 
   /* Start: Logic Userarray import */
   const [userArray, setUserArray] = useState(dbArray);
+  /* solving linter issue of defined setUserArray, but never used,
+  to be removed later */
+  console.log(setUserArray);
   /* End: Logic Userarray import */
 
   return (
