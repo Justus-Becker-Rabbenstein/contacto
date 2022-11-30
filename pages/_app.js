@@ -5,8 +5,8 @@ import {dbArray} from "../_db/dbArray";
 function MyApp({Component, pageProps}) {
   /* Start: Logic for Login credential saving */
   const [loginName, setLoginName] = useState("Enter user name ... ");
-  const onSubmitLogin = loginNameParam => {
-    setLoginName(loginNameParam);
+  const handleSubmitLogin = onSubmitLogin => {
+    setLoginName(onSubmitLogin);
   };
   /* End: Logic for Login credential saving */
 
@@ -23,7 +23,7 @@ function MyApp({Component, pageProps}) {
       <Component
         {...pageProps}
         loginName={loginName}
-        onSubmitLogin={onSubmitLogin}
+        handleSubmitLogin={handleSubmitLogin}
         userArray={userArray}
       />
     </>

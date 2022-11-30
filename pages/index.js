@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function Home({loginName, onSubmitLogin}) {
+export default function Home({loginName, handleSubmitLogin}) {
   return (
     <ContainerDiv>
       <ContainerHeadingOne>Login</ContainerHeadingOne>
@@ -10,7 +10,7 @@ export default function Home({loginName, onSubmitLogin}) {
           placeholder={loginName}
           type="text"
           onChange={e => {
-            onSubmitLogin(e.currentTarget.value);
+            handleSubmitLogin(e.currentTarget.value);
           }}
         />
       </ContainerForm>
