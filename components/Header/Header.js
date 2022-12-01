@@ -19,7 +19,7 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
         {menuClickStatus ? (
           <ContainerNav>
             <ContainerButton>
-              <Link href="#">Myself</Link>
+              <Link href="/myProfile">Myself</Link>
             </ContainerButton>
             <ContainerButton>
               <Link href="/myContacts">My Contacts</Link>
