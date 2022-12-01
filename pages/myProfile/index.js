@@ -15,11 +15,18 @@ const myProfile = ({loginName, userArray}) => {
     checkLoggedInUser.map((user)=> {
         return(
         <>
+        <ContainerProfileImage
+        src={user.image}
+        alt={user.name}
+        height="50vh"
+        width="50vw"
+        />
         <ContainerTextareaName disabled value={user.name} />
         <ContainerTextareaAddress  disabled value={user.address} />
         <ContainerTextareaEmail  disabled value={user.email} />
         <ContainerTextareaPhone  disabled value={user.phone} />
         <ContainerTextareaWebsite  disabled value={user.website} />
+        <button>Edit</button>
         </>
         )
     })
@@ -35,6 +42,9 @@ export default myProfile
 const ContainerDiv = styled.div`
 display: flex;
 flex-direction: column;
+align-items: center;
+margin-top: 10px;
+background-image: url("isaac-quesada-rjnT5-cQPPY-unsplash.jpg");
 `
 const ContainerTextareaName = styled.textarea`
 background-image: url("icon_name.svg");
@@ -71,3 +81,9 @@ background-position: left;
 background-size: contain;
 padding-left: 40px;
 `
+const ContainerProfileImage = styled.img`
+border-radius: 100%;
+height: 8em;
+width: 8em;
+border: 1px solid #001533;
+`;

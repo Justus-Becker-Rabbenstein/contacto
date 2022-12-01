@@ -64,7 +64,7 @@ const ContainerProfileImage = styled.img`
   border-radius: 100%;
   height: 6em;
   width: 6em;
-  border: 1px solid hotpink;
+  border: 1px solid #001533;
 `;
 const ContainerHeader = styled.header`
   border-radius: 10px;
