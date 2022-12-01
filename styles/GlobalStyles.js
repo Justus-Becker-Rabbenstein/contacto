@@ -18,6 +18,9 @@ const GlobalStyles = createGlobalStyle`
         color: #D9D9D9;
         border-radius: 9px;
     }
+    a {
+        color: #D9D9D9;
+    }
 `;
 
 export default GlobalStyles;

@@ -6,11 +6,18 @@ import Header from "../components/Header/Header";
 
 function MyApp({Component, pageProps}) {
   /* Start: Logic for Login credential saving */
-  const [loginName, setLoginName] = useState("Enter user name ... ");
+  const [loginName, setLoginName] = useState("User name");
   const handleSubmitLogin = onSubmitLogin => {
     setLoginName(onSubmitLogin);
   };
   /* End: Logic for Login credential saving */
+
+  /* Start: Logic Navigation */
+  const [menuClickStatus, setOnMenuClickStatus] = useState(false);
+  function handleNavbarClick(onNavbarClicked) {
+    setOnMenuClickStatus(onNavbarClicked);
+  }
+  /* End: Logic Navigation */
 
   /* Start: Logic Userarray import */
   const [userArray, setUserArray] = useState(dbArray);
@@ -22,7 +29,10 @@ function MyApp({Component, pageProps}) {
   return (
     <>
       <GlobalStyles />
-      <Header />
+      <Header
+        menuClickStatus={menuClickStatus}
+        onNavbarClick={handleNavbarClick}
+      />
       <Component
         {...pageProps}
         loginName={loginName}
