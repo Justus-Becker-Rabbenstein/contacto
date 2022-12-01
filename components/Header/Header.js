@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-const Header = ({menuClickStatus, handleNavbarClick}) => {
+const Header = ({menuClickStatus, onNavbarClick}) => {
   return (
     <>
       <ContainerHeader menuClickStatus={menuClickStatus}>
@@ -10,7 +10,7 @@ const Header = ({menuClickStatus, handleNavbarClick}) => {
             <img
               src="burger_menu.svg"
               alt="Burger menu"
-              onClick={() => handleNavbarClick(!menuClickStatus)}
+              onClick={() => onNavbarClick(!menuClickStatus)}
             />
           </picture>
           <ContainerImgMascot src="cat-logo.svg" alt="mascot of contacto" />

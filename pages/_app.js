@@ -31,7 +31,7 @@ function MyApp({Component, pageProps}) {
       <GlobalStyles />
       <Header
         menuClickStatus={menuClickStatus}
-        handleNavbarClick={handleNavbarClick}
+        onNavbarClick={handleNavbarClick}
       />
       <Component
         {...pageProps}
