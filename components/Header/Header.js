@@ -28,7 +28,7 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
               <Link href="#">Add Contacts</Link>
             </ContainerButton>
             <ContainerButton>
-              <Link href="#">Logout</Link>
+              <Link href="/">Logout</Link>
             </ContainerButton>
           </ContainerNav>
         ) : (
