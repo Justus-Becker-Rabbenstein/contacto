@@ -25,8 +25,6 @@ const ContainerDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-columns: (1fr, 1fr, 1fr);
-  grid-row: (1fr, 1fr);
 `;
 const ContainerHeadingOne = styled.h1`
   grid-column: 2;
@@ -51,4 +49,5 @@ const ContainerInput = styled.input`
   background-position: left;
   background-size: contain;
   padding-left: 40px;
+  width: 100%;
 `;
