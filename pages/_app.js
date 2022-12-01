@@ -12,6 +12,13 @@ function MyApp({Component, pageProps}) {
   };
   /* End: Logic for Login credential saving */
 
+  /* Start: Logic Navigation */
+  const [menuClickStatus, setOnMenuClickStatus] = useState(false);
+  function handleNavbarClick(onNavbarClicked) {
+    setOnMenuClickStatus(onNavbarClicked);
+  }
+  /* End: Logic Navigation */
+
   /* Start: Logic Userarray import */
   const [userArray, setUserArray] = useState(dbArray);
   /* solving lint issue of defined setUserArray, but never used,
@@ -22,7 +29,10 @@ function MyApp({Component, pageProps}) {
   return (
     <>
       <GlobalStyles />
-      <Header />
+      <Header
+        menuClickStatus={menuClickStatus}
+        handleNavbarClick={handleNavbarClick}
+      />
       <Component
         {...pageProps}
         loginName={loginName}
