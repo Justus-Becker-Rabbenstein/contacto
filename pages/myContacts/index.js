@@ -52,19 +52,24 @@ const ContainerSection = styled.section`
   flex-direction: column;
   align-items: center;
   position: relative;
-  border-radius: 10px;
   width: 80vw;
   margin: 10px auto;
-  background-image: url("isis-franca-4uZXCWaseNE-unsplash.jpg");
-  background-size: cover;
+
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.2px);
+  -webkit-backdrop-filter: blur(2.2px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 `;
 const ContainerProfileImage = styled.img`
   position: absolute;
-  right: -10px;
+  right: -5%;
+  top: -5%;
   border-radius: 100%;
   height: 6em;
   width: 6em;
-  border: 1px solid #001533;
+  border: 1px solid white;
 `;
 const ContainerHeader = styled.header`
   border-radius: 10px;
@@ -75,8 +80,10 @@ const Container = styled.div`
   border-radius: 10px;
   width: 80%;
   height: auto;
-  overflow: hidden;
   margin: 3px;
+  &:nth-child(7) {
+    margin-bottom: 10%;
+  }
 `;
 const ContainerParagraph = styled.p`
   line-height: 0px;
@@ -87,4 +94,5 @@ const ContainerIcon = styled.img`
   margin: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  margin-bottom: -6px;
 `;
