@@ -6,20 +6,27 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-family: 'Roboto', sans-serif;
-        background-image: url('pawel-czerwinski-HbcfaO4m03s-unsplash.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
+        background: rgb(207,245,231);
+        background: linear-gradient(45deg, rgba(207,245,231,1) 0%, rgba(160,228,203,1) 34%, rgba(89,193,189,1) 66%, rgba(13,76,146,1) 100%);
+        background-repeat: space repeat;
+        height: 100vh;
+    }
+    h1 {
+        color: #0D4C92;
+    }
+    button {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 120px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(2.2px);
+        -webkit-backdrop-filter: blur(2.2px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    a {
+        color: #0D4C92;
     }
     * {
         box-sizing: border-box;
-    }
-    button {
-        background-color: #001533;
-        color: #D9D9D9;
-        border-radius: 9px;
-    }
-    a {
-        color: #D9D9D9;
     }
 `;
 

@@ -6,35 +6,35 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
     <>
       <ContainerHeader menuClickStatus={menuClickStatus}>
         <ContainerUl>
-          <picture>
-            <img
-              src="burger_menu.svg"
+          <ContainerPictureTag>
+            <ContainerImgMenu
+              src="burger_menu.png"
               alt="Burger menu"
+              width="30%"
               onClick={() => onNavbarClick(!menuClickStatus)}
             />
-          </picture>
+          </ContainerPictureTag>
           <ContainerImgMascot src="cat-logo.svg" alt="mascot of contacto" />
-          <ContainerLiContactoText>contacto</ContainerLiContactoText>
         </ContainerUl>
-        {menuClickStatus ? (
-          <ContainerNav>
-            <ContainerButton>
-              <Link href="#">Myself</Link>
-            </ContainerButton>
-            <ContainerButton>
-              <Link href="/myContacts">My Contacts</Link>
-            </ContainerButton>
-            <ContainerButton>
-              <Link href="#">Add Contacts</Link>
-            </ContainerButton>
-            <ContainerButton>
-              <Link href="/">Logout</Link>
-            </ContainerButton>
-          </ContainerNav>
-        ) : (
-          ""
-        )}
       </ContainerHeader>
+      {menuClickStatus ? (
+        <ContainerNav>
+          <ContainerButton>
+            <Link href="/myProfile">Myself</Link>
+          </ContainerButton>
+          <ContainerButton>
+            <Link href="/myContacts">My Contacts</Link>
+          </ContainerButton>
+          <ContainerButton>
+            <Link href="#">Add Contacts</Link>
+          </ContainerButton>
+          <ContainerButton>
+            <Link href="/">Logout</Link>
+          </ContainerButton>
+        </ContainerNav>
+      ) : (
+        ""
+      )}
     </>
   );
 };
@@ -42,39 +42,41 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
 export default Header;
 
 const ContainerHeader = styled.header`
-  background-image: url("isis-franca-4uZXCWaseNE-unsplash.jpg");
-  background-size: cover;
-  border: 2px solid black;
-  transition: 2s ease;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.2px);
+  -webkit-backdrop-filter: blur(2.2px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 `;
 const ContainerUl = styled.ul`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   list-style-type: none;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
 `;
 const ContainerImgMascot = styled.img`
-  position: absolute;
-  top: 0px;
-`;
-const ContainerLiContactoText = styled.li`
-  color: #a92525;
-  font-size: large;
-  border-top: 3px solid #a92525;
-  border-bottom: 3px solid #a92525;
-  -webkit-text-stroke: 1px white;
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  position: relative;
+  bottom: -50px;
 `;
 const ContainerNav = styled.nav`
-  background-image: url("isaac-quesada-rjnT5-cQPPY-unsplash.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
 `;
 const ContainerButton = styled.button`
-  background-image: url(nav_myself.svg);
+  background-image: url(icon_name.svg);
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 20px;
   height: 100%;
+  width: 33%;
+  margin-left: 33%;
+`;
+const ContainerImgMenu = styled.img``;
+const ContainerPictureTag = styled.picture`
+  grid-column: 3 / 3;
+  grid-row: 1 / 1;
+  align-self: end;
 `;
