@@ -2,6 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const Header = ({menuClickStatus, onNavbarClick}) => {
+  // https://lottiefiles.com/91650-contact-me
+  // Link for mascot animation
   return (
     <>
       <ContainerHeader menuClickStatus={menuClickStatus}>

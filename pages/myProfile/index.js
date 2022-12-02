@@ -11,6 +11,7 @@ const myProfile = ({loginName, userArray}) => {
 
   return (
     <>
+      <h6>Login/My Profile</h6>
       <ContainerDiv>
         {loginName !== "User name" ? (
           checkLoggedInUser.map(user => {

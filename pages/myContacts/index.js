@@ -4,7 +4,7 @@ const myContacts = ({userArray}) => {
   return (
     <article>
       <header>
-        <h2>My Contacts</h2>
+        <h6>Login/My Contacts</h6>
       </header>
       {userArray.map(singleUser => {
         return (
