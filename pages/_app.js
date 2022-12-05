@@ -12,6 +12,13 @@ function MyApp({Component, pageProps}) {
   };
   /* End: Logic for Login credential saving */
 
+  /* Start: useState saves clicked user in myContacts to compare to logged in user */
+  const [clickedName, setClickedName] = useState("");
+  const handleUserNameClicked = onClickedUserName => {
+    setClickedName(onClickedUserName);
+  };
+  /* End:  useState myContacts compare */
+
   /* Start: Logic Navigation */
   const [menuClickStatus, setOnMenuClickStatus] = useState(false);
   function handleNavbarClick(onNavbarClicked) {
@@ -38,6 +45,8 @@ function MyApp({Component, pageProps}) {
         loginName={loginName}
         onSubmitLogin={handleSubmitLogin}
         userArray={userArray}
+        clickedName={clickedName}
+        onClickedUserName={handleUserNameClicked}
       />
       <Footer />
     </>

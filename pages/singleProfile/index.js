@@ -1,45 +1,37 @@
-import React from "react";
 import styled from "styled-components";
 
-const myProfile = ({loginName, userArray}) => {
-  // parses loginName String to Object to be able to compare them in the checkLoggedInUser Method
-  const loginNameObject = {name: `${loginName}`};
-  const checkLoggedInUser = userArray.filter(user => {
-    return user.name == loginNameObject.name;
+const singleProfile = ({userArray, clickedName}) => {
+  const clickedNameObject = {name: `${clickedName}`};
+  const checkClickedUser = userArray.filter(user => {
+    return user.name == clickedNameObject.name;
   });
 
   return (
     <>
-      <h6>Login/My Profile</h6>
-      <ContainerDiv>
-        {loginName !== "User name" ? (
-          checkLoggedInUser.map(user => {
-            return (
-              <>
-                <ContainerProfileImage
-                  src={user.image}
-                  alt={user.name}
-                  height="50vh"
-                  width="50vw"
-                />
-                <ContainerTextareaName disabled value={user.name} />
-                <ContainerTextareaAddress disabled value={user.address} />
-                <ContainerTextareaEmail disabled value={user.email} />
-                <ContainerTextareaPhone disabled value={user.phone} />
-                <ContainerTextareaWebsite disabled value={user.website} />
-                <ContainerButtonEdit>Edit</ContainerButtonEdit>
-              </>
-            );
-          })
-        ) : (
-          <p>No Data Found.</p>
-        )}
-      </ContainerDiv>
+      <h6>Login/My Contacts/Contact Profile</h6>
+      {checkClickedUser.map(user => {
+        return (
+          <ContainerDiv key={`key-section-${user.id}`}>
+            <ContainerProfileImage
+              src={user.image}
+              alt={user.name}
+              height="50vh"
+              width="50vw"
+            />
+            <ContainerTextareaName disabled value={user.name} />
+            <ContainerTextareaAddress disabled value={user.address} />
+            <ContainerTextareaEmail disabled value={user.email} />
+            <ContainerTextareaPhone disabled value={user.phone} />
+            <ContainerTextareaWebsite disabled value={user.website} />
+            <ContainerButtonEdit>Edit</ContainerButtonEdit>
+          </ContainerDiv>
+        );
+      })}
     </>
   );
 };
 
-export default myProfile;
+export default singleProfile;
 
 const ContainerDiv = styled.div`
   display: flex;
