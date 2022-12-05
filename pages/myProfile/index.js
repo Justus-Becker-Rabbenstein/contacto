@@ -45,11 +45,10 @@ const ContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
 
   margin-left: 10%;
   width: 80%;
-  gap: 3px;
+  gap: 0.1rem;
 
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -62,41 +61,41 @@ const ContainerTextareaName = styled.textarea`
   background-image: url("icon_name.svg");
   background-repeat: no-repeat;
   background-position: left;
-  background-size: contain;
-  padding-left: 40px;
-  border-radius: 20px;
+  background-size: 3rem;
+  padding-left: 3rem;
+  border-radius: 1.5rem;
 `;
 const ContainerTextareaAddress = styled.textarea`
   background-image: url("icon_address.svg");
   background-repeat: no-repeat;
   background-position: left;
-  background-size: contain;
-  padding-left: 40px;
-  border-radius: 20px;
+  background-size: 3rem;
+  padding-left: 3rem;
+  border-radius: 1.5rem;
 `;
 const ContainerTextareaEmail = styled.textarea`
   background-image: url("icon_email.svg");
   background-repeat: no-repeat;
   background-position: left;
-  background-size: contain;
-  padding-left: 40px;
-  border-radius: 20px;
+  background-size: 3rem;
+  padding-left: 3rem;
+  border-radius: 1.5rem;
 `;
 const ContainerTextareaPhone = styled.textarea`
   background-image: url("icon_phone.svg");
   background-repeat: no-repeat;
   background-position: left;
-  background-size: contain;
-  padding-left: 40px;
-  border-radius: 20px;
+  background-size: 3rem;
+  padding-left: 3rem;
+  border-radius: 1.5rem;
 `;
 const ContainerTextareaWebsite = styled.textarea`
   background-image: url("icon_website.svg");
   background-repeat: no-repeat;
   background-position: left;
-  background-size: contain;
-  padding-left: 40px;
-  border-radius: 20px;
+  background-size: 3rem;
+  padding-left: 3rem;
+  border-radius: 1.5rem;
 `;
 const ContainerProfileImage = styled.img`
   border-radius: 100%;
