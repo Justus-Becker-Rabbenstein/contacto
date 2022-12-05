@@ -6,11 +6,18 @@ import Header from "../components/Header/Header";
 
 function MyApp({Component, pageProps}) {
   /* Start: Logic for Login credential saving */
-  const [loginName, setLoginName] = useState("User name");
+  const [loginName, setLoginName] = useState("User Name");
   const handleSubmitLogin = onSubmitLogin => {
     setLoginName(onSubmitLogin);
   };
   /* End: Logic for Login credential saving */
+
+  /* Start: useState saves clicked user in myContacts to compare to logged in user */
+  const [clickedName, setClickedName] = useState("");
+  const handleUserNameClicked = onClickedUserName => {
+    setClickedName(onClickedUserName);
+  };
+  /* End:  useState myContacts compare */
 
   /* Start: Logic Navigation */
   const [menuClickStatus, setOnMenuClickStatus] = useState(false);
@@ -38,6 +45,8 @@ function MyApp({Component, pageProps}) {
         loginName={loginName}
         onSubmitLogin={handleSubmitLogin}
         userArray={userArray}
+        clickedName={clickedName}
+        onClickedUserName={handleUserNameClicked}
       />
       <Footer />
     </>

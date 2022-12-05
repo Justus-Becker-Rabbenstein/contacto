@@ -1,44 +1,53 @@
 import styled from "styled-components";
+import Link from "next/link";
 
-const myContacts = ({userArray}) => {
+const myContacts = ({userArray, onClickedUserName}) => {
   return (
     <article>
       <header>
-        <h2>My Contacts</h2>
+        <h6>Login/My Contacts</h6>
       </header>
       {userArray.map(singleUser => {
         return (
-          <ContainerSection key={`key-section-${singleUser.id}`}>
-            <ContainerProfileImage
-              src={singleUser.image}
-              alt={singleUser.name}
-              height="50vh"
-              width="50vw"
-            />
-            <ContainerHeader>
-              <h3>{singleUser.name}</h3>
-            </ContainerHeader>
-            <Container>
-              <ContainerIcon src="icon_name.svg" alt="Icon of name" />
-              <ContainerParagraph>{singleUser.name}</ContainerParagraph>
-            </Container>
-            <Container>
-              <ContainerIcon src="icon_address.svg" alt="Icon of address" />
-              <ContainerParagraph>{singleUser.address}</ContainerParagraph>
-            </Container>
-            <Container>
-              <ContainerIcon src="icon_email.svg" alt="Icon of email" />
-              <ContainerParagraph>{singleUser.email}</ContainerParagraph>
-            </Container>
-            <Container>
-              <ContainerIcon src="icon_phone.svg" alt="Icon of phone" />
-              <ContainerParagraph>{singleUser.phone}</ContainerParagraph>
-            </Container>
-            <Container>
-              <ContainerIcon src="icon_website.svg" alt="Icon of website" />
-              <ContainerParagraph>{singleUser.website}</ContainerParagraph>
-            </Container>
-          </ContainerSection>
+          <Link
+            href="/singleProfile"
+            onClick={function () {
+              onClickedUserName(singleUser.name);
+            }}
+            key={`key-section-${singleUser.id}`}
+          >
+            <ContainerSection>
+              <ContainerProfileImage
+                src={singleUser.image}
+                alt={singleUser.name}
+                height="50vh"
+                width="50vw"
+              />
+              <ContainerHeader>
+                <h3>{singleUser.name}</h3>
+              </ContainerHeader>
+              <Container>
+                <ContainerIcon src="icon_name.svg" alt="Icon of name" />
+                <ContainerParagraph>{singleUser.name}</ContainerParagraph>
+              </Container>
+              <Container>
+                <ContainerIcon src="icon_address.svg" alt="Icon of address" />
+                <ContainerParagraph>{singleUser.address}</ContainerParagraph>
+              </Container>
+              <Container>
+                <ContainerIcon src="icon_email.svg" alt="Icon of email" />
+                <ContainerParagraph>{singleUser.email}</ContainerParagraph>
+              </Container>
+              <Container>
+                <ContainerIcon src="icon_phone.svg" alt="Icon of phone" />
+                <ContainerParagraph>{singleUser.phone}</ContainerParagraph>
+              </Container>
+              <Container>
+                <ContainerIcon src="icon_website.svg" alt="Icon of website" />
+                <ContainerParagraph>{singleUser.website}</ContainerParagraph>
+              </Container>
+            </ContainerSection>
+          </Link>
         );
       })}
     </article>
@@ -61,6 +70,10 @@ const ContainerSection = styled.section`
   backdrop-filter: blur(2.2px);
   -webkit-backdrop-filter: blur(2.2px);
   border: 1px solid rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    border: 3px solid red;
+  }
 `;
 const ContainerProfileImage = styled.img`
   position: absolute;
