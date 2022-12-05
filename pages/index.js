@@ -63,7 +63,7 @@ const ContainerInput = styled.input`
   -webkit-backdrop-filter: blur(2.2px);
   border: 1px solid rgba(255, 255, 255, 0.5);
 
-  background-image: url("icon_name.png");
+  background-image: url("icon_name.svg");
   background-repeat: no-repeat;
   background-position: left;
   background-size: contain;

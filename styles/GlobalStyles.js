@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
         background: rgb(207,245,231);
         background: linear-gradient(45deg, rgba(207,245,231,1) 0%, rgba(160,228,203,1) 34%, rgba(89,193,189,1) 66%, rgba(13,76,146,1) 100%);
         background-repeat: space repeat;
-        height: 100vh;
+        min-height: 100vh;
     }
     h1 {
         color: #0D4C92;
