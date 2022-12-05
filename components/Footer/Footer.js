@@ -15,7 +15,7 @@ export default Footer;
 const ContainerFooter = styled.footer`
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: -10%;
   width: 100%;
   text-align: center;
 
