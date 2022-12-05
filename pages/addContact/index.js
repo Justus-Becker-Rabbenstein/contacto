@@ -13,20 +13,21 @@ const AddContact = ({userArray, onClickedAddUser}) => {
   }
 
   // Submit Form
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     const userArrayLength = userArray.length;
     let toBeAddedObject = {
       id: userArrayLength + 1,
-      name: e.target.name.value,
-      address: e.target.address.value,
-      email: e.target.email.value,
-      phone: e.target.phone.value,
-      website: e.target.website.value,
+      name: event.target.name.value,
+      address: event.target.address.value,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      website: event.target.website.value,
       image: imgUrl,
     };
     onClickedAddUser(toBeAddedObject);
-    console.log(userArray);
+    event.target.reset();
+    alert("New contact saved.");
   }
 
   return (
