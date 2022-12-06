@@ -47,15 +47,18 @@ const AddContact = ({userArray, onClickedAddUser}) => {
           name="address"
           placeholder="Enter contact address"
         />
-        <ContainerTextareaEmail
+        <ContainerInputEmail
+          type="email"
           name="email"
           placeholder="Enter contact email"
         />
-        <ContainerTextareaPhone
+        <ContainerInputPhone
+          type="tel"
           name="phone"
           placeholder="Enter contact phone number"
         />
-        <ContainerTextareaWebsite
+        <ContainerInputaWebsite
+          type="url"
           name="website"
           placeholder="Enter contact website"
         />
@@ -73,6 +76,15 @@ const ContainerParentTextarea = styled.textarea`
   background-size: 3rem;
   padding-left: 3rem;
   border-radius: 1.5rem;
+`;
+
+const ContainerParentInput = styled.input`
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 3rem;
+  padding-left: 3rem;
+  border-radius: 1.5rem;
+  height: 2.5rem;
 `;
 
 const ContainerForm = styled.form`
@@ -97,13 +109,13 @@ const ContainerTextareaName = styled(ContainerParentTextarea)`
 const ContainerTextareaAddress = styled(ContainerParentTextarea)`
   background-image: url("icon_address.svg");
 `;
-const ContainerTextareaEmail = styled(ContainerParentTextarea)`
+const ContainerInputEmail = styled(ContainerParentInput)`
   background-image: url("icon_email.svg");
 `;
-const ContainerTextareaPhone = styled(ContainerParentTextarea)`
+const ContainerInputPhone = styled(ContainerParentInput)`
   background-image: url("icon_phone.svg");
 `;
-const ContainerTextareaWebsite = styled(ContainerParentTextarea)`
+const ContainerInputaWebsite = styled(ContainerParentInput)`
   background-image: url("icon_website.svg");
 `;
 const ContainerProfileImage = styled.img`
@@ -118,4 +130,6 @@ const ContainerProfileImage = styled.img`
 const ContainerButtonSubmit = styled.button`
   margin-top: 10%;
   margin-bottom: 10%;
+  width: 12rem;
+  height: 2.5rem;
 `;
