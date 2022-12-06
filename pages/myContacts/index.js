@@ -1,13 +1,31 @@
 import styled from "styled-components";
 import Link from "next/link";
+import {useState} from "react";
 
-const myContacts = ({userArray, onClickedUserName}) => {
+const MyContacts = ({userArray, onClickedUserName}) => {
+  // useState Array for manipulation during search
+  const [userArraySearch, setUserArraySearch] = useState(userArray);
+
+  const onSearchInput = event => {
+    let searchQueryLowerCase = event.target.value.toLowerCase();
+    let displayedItems = userArray.filter(function (users) {
+      let searchValue = users.name.toLowerCase();
+      return searchValue.indexOf(searchQueryLowerCase) !== -1;
+    });
+    setUserArraySearch(displayedItems);
+  };
+
   return (
     <article>
       <header>
         <h6>Login/My Contacts</h6>
+        <ContainerSearchInput
+          type="text"
+          placeholder="Search by name ..."
+          onChange={onSearchInput}
+        />
       </header>
-      {userArray.map(singleUser => {
+      {userArraySearch.map(singleUser => {
         return (
           <Link
             href="/singleProfile"
@@ -26,26 +44,26 @@ const myContacts = ({userArray, onClickedUserName}) => {
               <ContainerHeader>
                 <h3>{singleUser.name}</h3>
               </ContainerHeader>
-              <Container>
+              <ContainerDiv>
                 <ContainerIcon src="icon_name.svg" alt="Icon of name" />
                 <ContainerParagraph>{singleUser.name}</ContainerParagraph>
-              </Container>
-              <Container>
+              </ContainerDiv>
+              <ContainerDiv>
                 <ContainerIcon src="icon_address.svg" alt="Icon of address" />
                 <ContainerParagraph>{singleUser.address}</ContainerParagraph>
-              </Container>
-              <Container>
+              </ContainerDiv>
+              <ContainerDiv>
                 <ContainerIcon src="icon_email.svg" alt="Icon of email" />
                 <ContainerParagraph>{singleUser.email}</ContainerParagraph>
-              </Container>
-              <Container>
+              </ContainerDiv>
+              <ContainerDiv>
                 <ContainerIcon src="icon_phone.svg" alt="Icon of phone" />
                 <ContainerParagraph>{singleUser.phone}</ContainerParagraph>
-              </Container>
-              <Container>
+              </ContainerDiv>
+              <ContainerDiv>
                 <ContainerIcon src="icon_website.svg" alt="Icon of website" />
                 <ContainerParagraph>{singleUser.website}</ContainerParagraph>
-              </Container>
+              </ContainerDiv>
             </ContainerSection>
           </Link>
         );
@@ -54,7 +72,7 @@ const myContacts = ({userArray, onClickedUserName}) => {
   );
 };
 
-export default myContacts;
+export default MyContacts;
 
 const ContainerSection = styled.section`
   display: flex;
@@ -85,16 +103,16 @@ const ContainerProfileImage = styled.img`
   border: 1px solid white;
 `;
 const ContainerHeader = styled.header`
-  border-radius: 10px;
+  width: 80%;
 `;
-const Container = styled.div`
+const ContainerDiv = styled.div`
   display: flex;
   background-color: white;
   border-radius: 10px;
   width: 80%;
   height: auto;
   margin: 3px;
-  &:nth-child(7) {
+  &:last-child {
     margin-bottom: 10%;
   }
 `;
@@ -108,4 +126,9 @@ const ContainerIcon = styled.img`
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   margin-bottom: -6px;
+`;
+const ContainerSearchInput = styled.input`
+  width: 75%;
+  margin-left: 10%;
+  margin-bottom: 5%;
 `;
