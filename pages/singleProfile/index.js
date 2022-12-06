@@ -33,6 +33,13 @@ const singleProfile = ({userArray, clickedName}) => {
 
 export default singleProfile;
 
+const ContainerParentTextarea = styled.textarea`
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 3rem;
+  padding-left: 3rem;
+  border-radius: 1.5rem;
+`;
 const ContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,45 +56,20 @@ const ContainerDiv = styled.div`
   -webkit-backdrop-filter: blur(2.2px);
   border: 1px solid rgba(255, 255, 255, 0.5);
 `;
-const ContainerTextareaName = styled.textarea`
+const ContainerTextareaName = styled(ContainerParentTextarea)`
   background-image: url("icon_name.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 3rem;
-  padding-left: 3rem;
-  border-radius: 1.5rem;
 `;
-const ContainerTextareaAddress = styled.textarea`
+const ContainerTextareaAddress = styled(ContainerParentTextarea)`
   background-image: url("icon_address.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 3rem;
-  padding-left: 3rem;
-  border-radius: 1.5rem;
 `;
-const ContainerTextareaEmail = styled.textarea`
+const ContainerTextareaEmail = styled(ContainerParentTextarea)`
   background-image: url("icon_email.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 3rem;
-  padding-left: 3rem;
-  border-radius: 1.5rem;
 `;
-const ContainerTextareaPhone = styled.textarea`
+const ContainerTextareaPhone = styled(ContainerParentTextarea)`
   background-image: url("icon_phone.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 3rem;
-  padding-left: 3rem;
-  border-radius: 1.5rem;
 `;
-const ContainerTextareaWebsite = styled.textarea`
+const ContainerTextareaWebsite = styled(ContainerParentTextarea)`
   background-image: url("icon_website.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 3rem;
-  padding-left: 3rem;
-  border-radius: 1.5rem;
 `;
 const ContainerProfileImage = styled.img`
   border-radius: 100%;

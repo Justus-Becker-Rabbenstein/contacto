@@ -12,7 +12,8 @@ function MyApp({Component, pageProps}) {
   };
   /* End: Logic for Login credential saving */
 
-  /* Start: useState saves clicked user in myContacts to compare to logged in user */
+  /* Start: useState saves clicked user in myContacts to 
+  compare to logged in user */
   const [clickedName, setClickedName] = useState("");
   const handleUserNameClicked = onClickedUserName => {
     setClickedName(onClickedUserName);
@@ -28,9 +29,9 @@ function MyApp({Component, pageProps}) {
 
   /* Start: Logic Userarray import */
   const [userArray, setUserArray] = useState(dbArray);
-  /* solving lint issue of defined setUserArray, but never used,
-  to be removed later */
-  console.log(setUserArray);
+  const handleNewUserArrayValue = onClickedAddUser => {
+    setUserArray([...userArray, onClickedAddUser]);
+  };
   /* End: Logic Userarray import */
 
   return (
@@ -45,6 +46,7 @@ function MyApp({Component, pageProps}) {
         loginName={loginName}
         onSubmitLogin={handleSubmitLogin}
         userArray={userArray}
+        onClickedAddUser={handleNewUserArrayValue}
         clickedName={clickedName}
         onClickedUserName={handleUserNameClicked}
       />
