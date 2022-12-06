@@ -2,8 +2,12 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const Header = ({menuClickStatus, onNavbarClick}) => {
-  // https://lottiefiles.com/91650-contact-me
-  // Link for mascot animation
+  /* Link for mascot animation
+  / https://lottiefiles.com/91650-contact-me */
+  //Sets bool value to render or not render navbar menu
+  function handleMenuClickStatus() {
+    onNavbarClick(!menuClickStatus);
+  }
   return (
     <>
       <ContainerHeader menuClickStatus={menuClickStatus}>
@@ -13,7 +17,7 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
               src="burger_menu.png"
               alt="Burger menu"
               width="30%"
-              onClick={() => onNavbarClick(!menuClickStatus)}
+              onClick={handleMenuClickStatus}
             />
           </ContainerPictureTag>
           <ContainerImgMascot src="cat-logo.svg" alt="mascot of contacto" />
@@ -21,16 +25,16 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
       </ContainerHeader>
       {menuClickStatus ? (
         <ContainerNav>
-          <ContainerButton>
+          <ContainerButton onClick={handleMenuClickStatus}>
             <Link href="/myProfile">Myself</Link>
           </ContainerButton>
-          <ContainerButton>
+          <ContainerButton onClick={handleMenuClickStatus}>
             <Link href="/myContacts">My Contacts</Link>
           </ContainerButton>
-          <ContainerButton>
+          <ContainerButton onClick={handleMenuClickStatus}>
             <Link href="/addContact">Add Contact</Link>
           </ContainerButton>
-          <ContainerButton>
+          <ContainerButton onClick={handleMenuClickStatus}>
             <Link href="/">Logout</Link>
           </ContainerButton>
         </ContainerNav>
