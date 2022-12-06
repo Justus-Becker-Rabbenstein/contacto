@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
+        margin-bottom: 2rem;
         font-family: 'Roboto', sans-serif;
         background: rgb(207,245,231);
         background: linear-gradient(45deg, rgba(207,245,231,1) 0%, rgba(160,228,203,1) 34%, rgba(89,193,189,1) 66%, rgba(13,76,146,1) 100%);
