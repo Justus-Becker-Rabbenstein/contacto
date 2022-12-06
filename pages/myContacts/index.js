@@ -7,11 +7,10 @@ const MyContacts = ({userArray, onClickedUserName}) => {
   const [userArraySearch, setUserArraySearch] = useState(userArray);
 
   const onSearchInput = event => {
-    let searchQueryLowerCase = event.target.value.toLowerCase();
-    let displayedItems = userArray.filter(function (users) {
-      let searchValue = users.name.toLowerCase();
-      return searchValue.indexOf(searchQueryLowerCase) !== -1;
-    });
+    const searchQueryLowerCase = event.target.value.toLowerCase();
+    const displayedItems = userArray.filter(user =>
+      user.name.toLowerCase().startsWith(searchQueryLowerCase)
+    );
     setUserArraySearch(displayedItems);
   };
 
