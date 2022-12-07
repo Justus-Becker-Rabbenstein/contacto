@@ -5,7 +5,7 @@ import Lottie from "react-lottie";
   / https://lottiefiles.com/91650-contact-me */
 import animationData from "../../lotties/mascot.json";
 
-const Header = ({menuClickStatus, onNavbarClick}) => {
+const Header = ({menuClickStatus, onNavbarClick, onSubmitLogin}) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -18,6 +18,11 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
   function handleMenuClickStatus() {
     onNavbarClick(!menuClickStatus);
   }
+  function handleMenuClickLogout() {
+    onNavbarClick(!menuClickStatus);
+    onSubmitLogin("User Name");
+  }
+
   return (
     <>
       <ContainerHeader menuClickStatus={menuClickStatus}>
@@ -49,7 +54,7 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
           <ContainerButton onClick={handleMenuClickStatus}>
             <Link href="/addContact">Add Contact</Link>
           </ContainerButton>
-          <ContainerButton onClick={handleMenuClickStatus}>
+          <ContainerButton onClick={handleMenuClickLogout}>
             <Link href="/">Logout</Link>
           </ContainerButton>
         </ContainerNav>
@@ -94,7 +99,7 @@ const ContainerImgMenu = styled.img``;
 const ContainerParagraph = styled.p`
   align-self: center;
   font-weight: bolder;
-  border-top: 1px solid #001533;
-  border-bottom: 1px solid #001533;
-  color: #001533;
+  border-top: 1px solid #0d4c92;
+  border-bottom: 1px solid #0d4c92;
+  color: #0d4c92;
 `;

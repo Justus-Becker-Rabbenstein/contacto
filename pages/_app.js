@@ -40,6 +40,7 @@ function MyApp({Component, pageProps}) {
       <Header
         menuClickStatus={menuClickStatus}
         onNavbarClick={handleNavbarClick}
+        onSubmitLogin={handleSubmitLogin}
       />
       <Component
         {...pageProps}

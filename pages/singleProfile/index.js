@@ -1,30 +1,56 @@
 import styled from "styled-components";
 
 const singleProfile = ({userArray, clickedName}) => {
+  // filters single profile
   const clickedNameObject = {name: `${clickedName}`};
   const checkClickedUser = userArray.filter(user => {
     return user.name == clickedNameObject.name;
   });
+  //handles click on email send
+  function onClickEmail() {
+    window.location.href = `mailto:${checkClickedUser[0].email}?subject=Hi from contacto!&body=Type%20your%20message`;
+  }
 
   return (
     <>
       <h6>Login/My Contacts/Contact Profile</h6>
       {checkClickedUser.map(user => {
         return (
-          <ContainerDiv key={`key-section-${user.id}`}>
+          <ContainerSection key={`key-section-${user.id}`}>
             <ContainerProfileImage
               src={user.image}
               alt={user.name}
               height="50vh"
               width="50vw"
             />
-            <ContainerTextareaName disabled value={user.name} />
-            <ContainerTextareaAddress disabled value={user.address} />
-            <ContainerTextareaEmail disabled value={user.email} />
-            <ContainerTextareaPhone disabled value={user.phone} />
-            <ContainerTextareaWebsite disabled value={user.website} />
+            <ContainerDivFlex>
+              <ContainerTextareaName disabled value={user.name} />
+              <button>Test</button>
+            </ContainerDivFlex>
+            <ContainerDivFlex>
+              <ContainerTextareaAddress disabled value={user.address} />
+              <button>Test</button>
+            </ContainerDivFlex>
+            <ContainerDivFlex>
+              <ContainerTextareaEmail disabled value={user.email} />
+              <ContainerButtonSendEmail
+                onClick={onClickEmail}
+              ></ContainerButtonSendEmail>
+            </ContainerDivFlex>
+            <ContainerDivFlex>
+              <ContainerTextareaPhone disabled value={user.phone} />
+              <button>Test</button>
+            </ContainerDivFlex>
+            <ContainerDivFlex>
+              <ContainerTextareaWebsite disabled value={user.website} />
+              <ContainerButtonVisitWebsite
+                onClick={function () {
+                  window.open(`${user.website}`, "_blank");
+                }}
+              ></ContainerButtonVisitWebsite>
+            </ContainerDivFlex>
             <ContainerButtonEdit>Edit</ContainerButtonEdit>
-          </ContainerDiv>
+          </ContainerSection>
         );
       })}
     </>
@@ -35,12 +61,22 @@ export default singleProfile;
 
 const ContainerParentTextarea = styled.textarea`
   background-repeat: no-repeat;
-  background-position: left;
-  background-size: 3rem;
+  background-position-x: left;
+  background-position-y: bottom;
+  background-size: 2rem;
   padding-left: 3rem;
-  border-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
 `;
-const ContainerDiv = styled.div`
+const ContainerParentButton = styled.button`
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 2rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+`;
+const ContainerSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,4 +120,13 @@ const ContainerButtonEdit = styled.button`
   width: 33%;
   margin-top: 10%;
   margin-bottom: 10%;
+`;
+const ContainerDivFlex = styled.div`
+  display: flex;
+`;
+const ContainerButtonVisitWebsite = styled(ContainerParentButton)`
+  background-image: url("icon_visit_website.svg");
+`;
+const ContainerButtonSendEmail = styled(ContainerParentButton)`
+  background-image: url("icon_sendemail.svg");
 `;
