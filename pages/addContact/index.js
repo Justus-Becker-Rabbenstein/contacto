@@ -72,19 +72,22 @@ export default AddContact;
 
 const ContainerParentTextarea = styled.textarea`
   background-repeat: no-repeat;
-  background-position: left;
-  background-size: 3rem;
   padding-left: 3rem;
   border-radius: 1.5rem;
+  background-position-x: left;
+  background-position-y: bottom;
+  background-size: 2rem;
 `;
 
 const ContainerParentInput = styled.input`
   background-repeat: no-repeat;
   background-position: left;
-  background-size: 3rem;
   padding-left: 3rem;
   border-radius: 1.5rem;
   height: 2.5rem;
+  background-position-x: left;
+  background-position-y: bottom;
+  background-size: 2rem;
 `;
 
 const ContainerForm = styled.form`
