@@ -1,7 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Lottie from 'react-lottie';
-import animationData from '../../lotties/mascot.json';
+import Lottie from "react-lottie";
+/* Link for mascot animation
+  / https://lottiefiles.com/91650-contact-me */
+import animationData from "../../lotties/mascot.json";
 
 const Header = ({menuClickStatus, onNavbarClick}) => {
   const defaultOptions = {
@@ -9,11 +11,9 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
-  /* Link for mascot animation
-  / https://lottiefiles.com/91650-contact-me */
   //Sets bool value to render or not render navbar menu
   function handleMenuClickStatus() {
     onNavbarClick(!menuClickStatus);
@@ -22,17 +22,19 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
     <>
       <ContainerHeader menuClickStatus={menuClickStatus}>
         <ContainerUl>
-            <ContainerImgMenu
-              src="burger_menu.png"
-              alt="Burger menu"
-              width="25%"
-              height="25%"
-              onClick={handleMenuClickStatus}
-            />
+          <ContainerParagraph>contacto</ContainerParagraph>
+          <ContainerImgMenu
+            src="burger_menu.png"
+            alt="Burger menu"
+            width="25%"
+            height="25%"
+            onClick={handleMenuClickStatus}
+          />
           <Lottie
-          options={defaultOptions}
-          height="25%"
-          width="25%"
+            options={defaultOptions}
+            height="25%"
+            width="25%"
+            style={{margin: 0}}
           />
         </ContainerUl>
       </ContainerHeader>
@@ -71,7 +73,7 @@ const ContainerUl = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 0;
 `;
 const ContainerNav = styled.nav`
@@ -89,6 +91,10 @@ const ContainerButton = styled.button`
   margin-left: 33%;
 `;
 const ContainerImgMenu = styled.img``;
-const ContainerPictureTag = styled.picture`
-flex-basis: fit-content;
+const ContainerParagraph = styled.p`
+  align-self: center;
+  font-weight: bolder;
+  border-top: 1px solid #001533;
+  border-bottom: 1px solid #001533;
+  color: #001533;
 `;
