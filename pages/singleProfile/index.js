@@ -25,7 +25,6 @@ const singleProfile = ({userArray, clickedName}) => {
             />
             <ContainerDivFlex>
               <ContainerTextareaName disabled value={user.name} />
-              <button>Test</button>
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaAddress disabled value={user.address} />
@@ -94,6 +93,8 @@ const ContainerSection = styled.section`
 `;
 const ContainerTextareaName = styled(ContainerParentTextarea)`
   background-image: url("icon_name.svg");
+  border-radius: 1.5rem;
+  width: 61vw;
 `;
 const ContainerTextareaAddress = styled(ContainerParentTextarea)`
   background-image: url("icon_address.svg");
@@ -117,7 +118,8 @@ const ContainerProfileImage = styled.img`
 `;
 
 const ContainerButtonEdit = styled.button`
-  width: 33%;
+  width: 61vw;
+  height: 2rem;
   margin-top: 10%;
   margin-bottom: 10%;
 `;
