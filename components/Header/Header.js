@@ -1,9 +1,19 @@
 import Link from "next/link";
 import styled from "styled-components";
+import Lottie from "react-lottie";
+/* Link for mascot animation
+  / https://lottiefiles.com/91650-contact-me */
+import animationData from "../../lotties/mascot.json";
 
 const Header = ({menuClickStatus, onNavbarClick}) => {
-  /* Link for mascot animation
-  / https://lottiefiles.com/91650-contact-me */
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   //Sets bool value to render or not render navbar menu
   function handleMenuClickStatus() {
     onNavbarClick(!menuClickStatus);
@@ -12,15 +22,20 @@ const Header = ({menuClickStatus, onNavbarClick}) => {
     <>
       <ContainerHeader menuClickStatus={menuClickStatus}>
         <ContainerUl>
-          <ContainerPictureTag>
-            <ContainerImgMenu
-              src="burger_menu.png"
-              alt="Burger menu"
-              width="30%"
-              onClick={handleMenuClickStatus}
-            />
-          </ContainerPictureTag>
-          <ContainerImgMascot src="cat-logo.svg" alt="mascot of contacto" />
+          <ContainerParagraph>contacto</ContainerParagraph>
+          <ContainerImgMenu
+            src="burger_menu.png"
+            alt="Burger menu"
+            width="25%"
+            height="25%"
+            onClick={handleMenuClickStatus}
+          />
+          <Lottie
+            options={defaultOptions}
+            height="25%"
+            width="25%"
+            style={{margin: 0}}
+          />
         </ContainerUl>
       </ContainerHeader>
       {menuClickStatus ? (
@@ -56,15 +71,10 @@ const ContainerHeader = styled.header`
 `;
 const ContainerUl = styled.ul`
   list-style-type: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-`;
-const ContainerImgMascot = styled.img`
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-  position: relative;
-  bottom: -50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0;
 `;
 const ContainerNav = styled.nav`
   background-size: cover;
@@ -81,8 +91,10 @@ const ContainerButton = styled.button`
   margin-left: 33%;
 `;
 const ContainerImgMenu = styled.img``;
-const ContainerPictureTag = styled.picture`
-  grid-column: 3 / 3;
-  grid-row: 1 / 1;
-  align-self: end;
+const ContainerParagraph = styled.p`
+  align-self: center;
+  font-weight: bolder;
+  border-top: 1px solid #001533;
+  border-bottom: 1px solid #001533;
+  color: #001533;
 `;
