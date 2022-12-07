@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const singleProfile = ({userArray, clickedName}) => {
-  // filters single profile
+  // filters single profil
   const clickedNameObject = {name: `${clickedName}`};
   const checkClickedUser = userArray.filter(user => {
     return user.name == clickedNameObject.name;
