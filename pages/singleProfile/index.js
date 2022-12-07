@@ -33,7 +33,9 @@ const singleProfile = ({userArray, clickedName}) => {
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaEmail disabled value={user.email} />
-              <ContainerButtonSendEmail onClick={onClickEmail}></ContainerButtonSendEmail>
+              <ContainerButtonSendEmail
+                onClick={onClickEmail}
+              ></ContainerButtonSendEmail>
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaPhone disabled value={user.phone} />
@@ -73,7 +75,6 @@ const ContainerParentButton = styled.button`
   width: 2rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-
 `;
 const ContainerSection = styled.section`
   display: flex;
@@ -127,5 +128,5 @@ const ContainerButtonVisitWebsite = styled(ContainerParentButton)`
   background-image: url("icon_visit_website.svg");
 `;
 const ContainerButtonSendEmail = styled(ContainerParentButton)`
-background-image: url("icon_sendemail.svg");
+  background-image: url("icon_sendemail.svg");
 `;
