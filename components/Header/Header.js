@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Lottie from "react-lottie";
-/* Link for mascot animatio
+/* Link for mascot animation
   / https://lottiefiles.com/91650-contact-me */
 import animationData from "../../lotties/mascot.json";
 
