@@ -23,7 +23,7 @@ const singleProfile = ({userArray, loginName, clickedName}) => {
   function onClickCallPhone() {
     window.open(`tel:${checkClickedUser[0].phone}`);
   }
-  // function click on calculate google maps route
+  // function click on calculate google maps rout
   function onClickGooglemaps() {
     console.log(checkLoggedInUser[0].address);
     window.open(
