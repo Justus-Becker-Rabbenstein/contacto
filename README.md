@@ -1,3 +1,12 @@
+# contacto
+The website contacto is for managing contacts.
+You can
+- add
+- display
+- show own profile
+and edit your contacts and own profile.
+The single contact view features options to calculate Google Maps routes to your contact, call your contact, send an email to your contact and visit the contacts website.
+
 # Capstone-Project-Template for Octopodes
 
 - Next.js project created with `create-next-app`
