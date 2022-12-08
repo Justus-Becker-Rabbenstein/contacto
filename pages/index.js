@@ -45,6 +45,10 @@ const ContainerButton = styled.button`
   backdrop-filter: blur(2.2px);
   -webkit-backdrop-filter: blur(2.2px);
   border: 1px solid rgba(255, 255, 255, 0.5);
+
+  &:active {
+    background-color: #cff5e7;
+  }
 `;
 
 const ContainerForm = styled.form`
@@ -68,4 +72,8 @@ const ContainerInput = styled.input`
   background-position: left;
   background-size: contain;
   padding-left: 40px;
+  &:focus {
+    border: 1px solid #0d4c92;
+    background-color: #cff5e7;
+  }
 `;

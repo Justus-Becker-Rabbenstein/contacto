@@ -140,7 +140,7 @@ const ContainerProfileImage = styled.img`
 `;
 
 const ContainerButtonEdit = styled.button`
-  width: 61vw;
+  width: 15rem;
   height: 2rem;
   margin-top: 10%;
   margin-bottom: 10%;

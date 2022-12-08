@@ -89,7 +89,10 @@ const ContainerSection = styled.section`
   border: 1px solid rgba(255, 255, 255, 0.5);
 
   &:hover {
-    border: 3px solid red;
+    border: 3px solid #cff5e7;
+  }
+  &:active {
+    background-color: #cff5e7;
   }
 `;
 const ContainerProfileImage = styled.img`
