@@ -116,7 +116,6 @@ const ContainerDiv = styled.div`
   }
 `;
 const ContainerParagraph = styled.p`
-  line-height: 0px;
   padding-left: 3px;
 `;
 const ContainerIcon = styled.img`

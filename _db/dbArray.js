@@ -2,7 +2,7 @@ export const dbArray = [
   {
     id: 0,
     name: "Peter Pan",
-    address: "Nimmerlandallee 6",
+    address: "Cheruskerstraße 143, 33649 Bielefeld",
     email: "peter@pan.com",
     phone: "+49800 3301000",
     website: "https://www.google.com/",
@@ -12,7 +12,7 @@ export const dbArray = [
   {
     id: 1,
     name: "Peter Lustig",
-    address: "Loewenzahnweg 5",
+    address: "Kupferstraße 9, 33649 Bielefeld",
     email: "peter@lustig.de",
     phone: "+49800 3301000",
     website: "https://www.google.com/",
@@ -22,7 +22,7 @@ export const dbArray = [
   {
     id: 2,
     name: "Kermit der Frosch",
-    address: "Frogstreet 42",
+    address: "Berliner Str. 23, 30952 Ronnenberg",
     email: "kermit@muppets.com",
     phone: "+49800 3301000",
     website: "https://www.google.com/",
@@ -31,7 +31,7 @@ export const dbArray = [
   {
     id: 3,
     name: "Miss Piggy",
-    address: "Oink way 73",
+    address: "Apollostraße 2, 30952 Ronnenberg",
     email: "misspiggy@muppets.com",
     phone: "+49800 3301000",
     website: "https://www.google.com/",

@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
-const singleProfile = ({userArray, clickedName}) => {
-  // filters single profile
+const singleProfile = ({userArray, loginName, clickedName}) => {
+  //filters logged in user
+  const loginNameObject = {name: `${loginName}`};
+  const checkLoggedInUser = userArray.filter(user => {
+    return user.name == loginNameObject.name;
+  });
+  // filters single profile of my contacts
   const clickedNameObject = {name: `${clickedName}`};
   const checkClickedUser = userArray.filter(user => {
     return user.name == clickedNameObject.name;
@@ -17,6 +22,14 @@ const singleProfile = ({userArray, clickedName}) => {
   //handles click on call phone
   function onClickCallPhone() {
     window.open(`tel:${checkClickedUser[0].phone}`);
+  }
+  // function click on calculate google maps route
+  function onClickGooglemaps() {
+    console.log(checkLoggedInUser[0].address);
+    window.open(
+      `https://www.google.de/maps/dir/${checkLoggedInUser[0].address}/${checkClickedUser[0].address}`,
+      "_blank"
+    );
   }
 
   return (
@@ -36,7 +49,9 @@ const singleProfile = ({userArray, clickedName}) => {
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaAddress disabled value={user.address} />
-              <button>Test</button>
+              <ContainerButtonRouteGooglemaps
+                onClick={onClickGooglemaps}
+              ></ContainerButtonRouteGooglemaps>
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaEmail disabled value={user.email} />
@@ -142,4 +157,7 @@ const ContainerButtonSendEmail = styled(ContainerParentButton)`
 `;
 const ContainerButtonPhone = styled(ContainerParentButton)`
   background-image: url("icon_call_phone.svg");
+`;
+const ContainerButtonRouteGooglemaps = styled(ContainerParentButton)`
+  background-image: url("icon_route_googlemaps.svg");
 `;
