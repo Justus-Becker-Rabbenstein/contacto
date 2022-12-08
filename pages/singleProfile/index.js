@@ -6,9 +6,17 @@ const singleProfile = ({userArray, clickedName}) => {
   const checkClickedUser = userArray.filter(user => {
     return user.name == clickedNameObject.name;
   });
+  //handles click on visit website
+  function onClickVisitWebsite() {
+    window.open(`${checkClickedUser[0].website}`, "_blank");
+  }
   //handles click on email send
   function onClickEmail() {
     window.location.href = `mailto:${checkClickedUser[0].email}?subject=Hi from contacto!&body=Type%20your%20message`;
+  }
+  //handles click on call phone
+  function onClickCallPhone() {
+    window.open(`tel:${checkClickedUser[0].phone}`);
   }
 
   return (
@@ -25,7 +33,6 @@ const singleProfile = ({userArray, clickedName}) => {
             />
             <ContainerDivFlex>
               <ContainerTextareaName disabled value={user.name} />
-              <button>Test</button>
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaAddress disabled value={user.address} />
@@ -39,14 +46,14 @@ const singleProfile = ({userArray, clickedName}) => {
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaPhone disabled value={user.phone} />
-              <button>Test</button>
+              <ContainerButtonPhone
+                onClick={onClickCallPhone}
+              ></ContainerButtonPhone>
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaWebsite disabled value={user.website} />
               <ContainerButtonVisitWebsite
-                onClick={function () {
-                  window.open(`${user.website}`, "_blank");
-                }}
+                onClick={onClickVisitWebsite}
               ></ContainerButtonVisitWebsite>
             </ContainerDivFlex>
             <ContainerButtonEdit>Edit</ContainerButtonEdit>
@@ -94,6 +101,8 @@ const ContainerSection = styled.section`
 `;
 const ContainerTextareaName = styled(ContainerParentTextarea)`
   background-image: url("icon_name.svg");
+  border-radius: 1.5rem;
+  width: 61vw;
 `;
 const ContainerTextareaAddress = styled(ContainerParentTextarea)`
   background-image: url("icon_address.svg");
@@ -117,7 +126,8 @@ const ContainerProfileImage = styled.img`
 `;
 
 const ContainerButtonEdit = styled.button`
-  width: 33%;
+  width: 61vw;
+  height: 2rem;
   margin-top: 10%;
   margin-bottom: 10%;
 `;
@@ -129,4 +139,7 @@ const ContainerButtonVisitWebsite = styled(ContainerParentButton)`
 `;
 const ContainerButtonSendEmail = styled(ContainerParentButton)`
   background-image: url("icon_sendemail.svg");
+`;
+const ContainerButtonPhone = styled(ContainerParentButton)`
+  background-image: url("icon_call_phone.svg");
 `;
