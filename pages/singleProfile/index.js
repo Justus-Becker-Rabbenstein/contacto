@@ -6,9 +6,17 @@ const singleProfile = ({userArray, clickedName}) => {
   const checkClickedUser = userArray.filter(user => {
     return user.name == clickedNameObject.name;
   });
+  //handles click on visit website
+  function onClickVisitWebsite() {
+    window.open(`${checkClickedUser[0].website}`, "_blank");
+  }
   //handles click on email send
   function onClickEmail() {
     window.location.href = `mailto:${checkClickedUser[0].email}?subject=Hi from contacto!&body=Type%20your%20message`;
+  }
+  //handles click on call phone
+  function onClickCallPhone() {
+    window.open(`tel:${checkClickedUser[0].phone}`);
   }
 
   return (
@@ -38,14 +46,14 @@ const singleProfile = ({userArray, clickedName}) => {
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaPhone disabled value={user.phone} />
-              <button>Test</button>
+              <ContainerButtonPhone
+                onClick={onClickCallPhone}
+              ></ContainerButtonPhone>
             </ContainerDivFlex>
             <ContainerDivFlex>
               <ContainerTextareaWebsite disabled value={user.website} />
               <ContainerButtonVisitWebsite
-                onClick={function () {
-                  window.open(`${user.website}`, "_blank");
-                }}
+                onClick={onClickVisitWebsite}
               ></ContainerButtonVisitWebsite>
             </ContainerDivFlex>
             <ContainerButtonEdit>Edit</ContainerButtonEdit>
@@ -131,4 +139,7 @@ const ContainerButtonVisitWebsite = styled(ContainerParentButton)`
 `;
 const ContainerButtonSendEmail = styled(ContainerParentButton)`
   background-image: url("icon_sendemail.svg");
+`;
+const ContainerButtonPhone = styled(ContainerParentButton)`
+  background-image: url("icon_call_phone.svg");
 `;
