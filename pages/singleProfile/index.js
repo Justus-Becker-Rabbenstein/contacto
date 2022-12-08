@@ -116,7 +116,7 @@ const ContainerSection = styled.section`
 const ContainerTextareaName = styled(ContainerParentTextarea)`
   background-image: url("icon_name.svg");
   border-radius: 1.5rem;
-  width: 61vw;
+  width: 15rem;
 `;
 const ContainerTextareaAddress = styled(ContainerParentTextarea)`
   background-image: url("icon_address.svg");

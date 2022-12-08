@@ -90,7 +90,7 @@ const ContainerProfileImage = styled.img`
 `;
 
 const ContainerButtonEdit = styled.button`
-  width: 65%;
+  width: 15rem;
   height: 2rem;
   margin-top: 10%;
   margin-bottom: 10%;

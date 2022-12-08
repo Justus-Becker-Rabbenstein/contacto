@@ -31,14 +31,12 @@ const Header = ({menuClickStatus, onNavbarClick, onSubmitLogin}) => {
           <ContainerImgMenu
             src="burger_menu.png"
             alt="Burger menu"
-            width="25%"
-            height="25%"
             onClick={handleMenuClickStatus}
           />
           <Lottie
             options={defaultOptions}
-            height="25%"
-            width="25%"
+            height="100px"
+            width="100px"
             style={{margin: 0}}
           />
         </ContainerUl>
@@ -95,7 +93,17 @@ const ContainerButton = styled.button`
   width: 33%;
   margin-left: 33%;
 `;
-const ContainerImgMenu = styled.img``;
+const ContainerImgMenu = styled.img`
+  width: 15%;
+  height: 15%;
+  align-self: center;
+  @media (min-width: 900px) {
+    width: 10%;
+  }
+  @media (min-width: 1200px) {
+    width: 5%;
+  }
+`;
 const ContainerParagraph = styled.p`
   align-self: center;
   font-weight: bolder;
