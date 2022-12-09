@@ -74,7 +74,7 @@ const ContainerNav = styled.nav`
   flex-direction: column;
 `;
 const ContainerButton = styled.button`
-  background-image: url(icon_name.svg);
+  background-image: url(images/icon_header/icon_links.svg);
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 20px;
