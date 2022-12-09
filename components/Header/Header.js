@@ -1,8 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Lottie from "react-lottie";
-/* Link for mascot animation
-  / https://lottiefiles.com/91650-contact-me */
 import animationData from "../../lotties/mascot.json";
 
 const Header = ({menuClickStatus, onNavbarClick, onSubmitLogin}) => {
@@ -29,7 +27,7 @@ const Header = ({menuClickStatus, onNavbarClick, onSubmitLogin}) => {
         <ContainerUl>
           <ContainerParagraph>contacto</ContainerParagraph>
           <ContainerImgMenu
-            src="burger_menu.png"
+            src="images/icon_header/burger_menu.png"
             alt="Burger menu"
             onClick={handleMenuClickStatus}
           />

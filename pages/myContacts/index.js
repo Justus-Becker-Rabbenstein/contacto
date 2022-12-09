@@ -1,8 +1,20 @@
 import styled from "styled-components";
 import Link from "next/link";
 import {useState} from "react";
+import Lottie from "react-lottie";
+import animationData from "../../lotties/mycontacts_search_animation.json";
 
 const MyContacts = ({userArray, onClickedUserName}) => {
+  // Lottie config
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   // useState Array for manipulation during search
   const [userArraySearch, setUserArraySearch] = useState(userArray);
 
@@ -18,6 +30,7 @@ const MyContacts = ({userArray, onClickedUserName}) => {
     <article>
       <header>
         <h6>Login/My Contacts</h6>
+        <Lottie options={defaultOptions} height="100px" width="100px" />
         <ContainerSearchInput
           type="text"
           placeholder="Search by name ..."
@@ -44,23 +57,38 @@ const MyContacts = ({userArray, onClickedUserName}) => {
                 <h3>{singleUser.name}</h3>
               </ContainerHeader>
               <ContainerDiv>
-                <ContainerIcon src="icon_name.svg" alt="Icon of name" />
+                <ContainerIcon
+                  src="images/icon_contact/icon_name.svg"
+                  alt="Icon of name"
+                />
                 <ContainerParagraph>{singleUser.name}</ContainerParagraph>
               </ContainerDiv>
               <ContainerDiv>
-                <ContainerIcon src="icon_address.svg" alt="Icon of address" />
+                <ContainerIcon
+                  src="images/icon_contact/icon_address.svg"
+                  alt="Icon of address"
+                />
                 <ContainerParagraph>{singleUser.address}</ContainerParagraph>
               </ContainerDiv>
               <ContainerDiv>
-                <ContainerIcon src="icon_email.svg" alt="Icon of email" />
+                <ContainerIcon
+                  src="images/icon_contact/icon_email.svg"
+                  alt="Icon of email"
+                />
                 <ContainerParagraph>{singleUser.email}</ContainerParagraph>
               </ContainerDiv>
               <ContainerDiv>
-                <ContainerIcon src="icon_phone.svg" alt="Icon of phone" />
+                <ContainerIcon
+                  src="images/icon_contact/icon_phone.svg"
+                  alt="Icon of phone"
+                />
                 <ContainerParagraph>{singleUser.phone}</ContainerParagraph>
               </ContainerDiv>
               <ContainerDiv>
-                <ContainerIcon src="icon_website.svg" alt="Icon of website" />
+                <ContainerIcon
+                  src="images/icon_contact/icon_website.svg"
+                  alt="Icon of website"
+                />
                 <ContainerParagraph>{singleUser.website}</ContainerParagraph>
               </ContainerDiv>
             </ContainerSection>
@@ -129,7 +157,15 @@ const ContainerIcon = styled.img`
   margin-bottom: -6px;
 `;
 const ContainerSearchInput = styled.input`
+  background-image: url("images/icon_search/icon_search.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  background-position-x: 0.3rem;
+  padding-left: 2rem;
+
   width: 75%;
   margin-left: 10%;
   margin-bottom: 5%;
+  margin-top: 2%;
 `;

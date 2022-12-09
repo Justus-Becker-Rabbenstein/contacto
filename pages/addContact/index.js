@@ -1,8 +1,20 @@
 import {useState} from "react";
 import styled from "styled-components";
+import Lottie from "react-lottie";
+import animationData from "../../lotties/addcontact.json";
 
 const AddContact = ({userArray, onClickedAddUser}) => {
-  const [imgUrl, setImgUrl] = useState("/icon_image.svg");
+  // Lottie config
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const [imgUrl, setImgUrl] = useState("images/icon_addcontact/icon_image.svg");
 
   function handleImgClicked() {
     let imgUrlVar = window.prompt(
@@ -34,6 +46,9 @@ const AddContact = ({userArray, onClickedAddUser}) => {
     <>
       <h6>Login/Add Contact</h6>
       <ContainerForm type="Submit" onSubmit={handleSubmit}>
+        <ContainerLottie>
+          <Lottie options={defaultOptions} height="10rem" width="10rem" />
+        </ContainerLottie>
         <ContainerProfileImage
           src={imgUrl}
           alt=""
@@ -107,19 +122,19 @@ const ContainerForm = styled.form`
   border: 1px solid rgba(255, 255, 255, 0.5);
 `;
 const ContainerTextareaName = styled(ContainerParentTextarea)`
-  background-image: url("icon_name.svg");
+  background-image: url("images/icon_contact/icon_name.svg");
 `;
 const ContainerTextareaAddress = styled(ContainerParentTextarea)`
-  background-image: url("icon_address.svg");
+  background-image: url("images/icon_contact/icon_address.svg");
 `;
 const ContainerInputEmail = styled(ContainerParentInput)`
-  background-image: url("icon_email.svg");
+  background-image: url("images/icon_contact/icon_email.svg");
 `;
 const ContainerInputPhone = styled(ContainerParentInput)`
-  background-image: url("icon_phone.svg");
+  background-image: url("images/icon_contact/icon_phone.svg");
 `;
 const ContainerInputaWebsite = styled(ContainerParentInput)`
-  background-image: url("icon_website.svg");
+  background-image: url("images/icon_contact/icon_website.svg");
 `;
 const ContainerProfileImage = styled.img`
   border-radius: 100%;
@@ -135,4 +150,15 @@ const ContainerButtonSubmit = styled.button`
   margin-bottom: 10%;
   width: 12rem;
   height: 2.5rem;
+
+  background-image: url("images/icon_buttons/button_submit.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 1.5rem;
+  background-position-x: 0.3rem;
+`;
+const ContainerLottie = styled.div`
+  position: absolute;
+  right: -4.5rem;
+  top: -4.5rem;
 `;

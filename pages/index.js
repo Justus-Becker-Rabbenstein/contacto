@@ -1,10 +1,22 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Lottie from "react-lottie";
+import animationData from "../lotties/login_animation.json";
 
 export default function Home({loginName, onSubmitLogin}) {
+  // Lottie config
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
     <ContainerDiv>
       <ContainerHeadingOne>Login</ContainerHeadingOne>
+      <Lottie options={defaultOptions} height="100px" width="100px" />
       <ContainerForm>
         <ContainerInput
           placeholder={loginName}
@@ -15,7 +27,7 @@ export default function Home({loginName, onSubmitLogin}) {
         />
       </ContainerForm>
       <ContainerButton>
-        <Link href="/myContacts">Submit</Link>
+        <Link href="/myContacts">Login</Link>
       </ContainerButton>
     </ContainerDiv>
   );
@@ -23,21 +35,18 @@ export default function Home({loginName, onSubmitLogin}) {
 
 const ContainerDiv = styled.div`
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
 `;
 const ContainerHeadingOne = styled.h1`
-  grid-column: 2;
-  grid-row: 1;
   text-align: center;
   color: #001533;
 `;
 const ContainerButton = styled.button`
-  grid-column: 2;
-  grid-row: 3;
   font-size: 2vh;
-  height: 50%;
+  width: 80%;
+  height: 2rem;
+  margin-left: 10%;
 
   background: rgba(255, 255, 255, 0.1);
   border-radius: 120px;
@@ -45,6 +54,12 @@ const ContainerButton = styled.button`
   backdrop-filter: blur(2.2px);
   -webkit-backdrop-filter: blur(2.2px);
   border: 1px solid rgba(255, 255, 255, 0.5);
+
+  background-image: url("images/icon_buttons/button_login.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 2rem;
+  background-position-x: 0.3rem;
 
   &:active {
     background-color: #cff5e7;
@@ -57,8 +72,10 @@ const ContainerForm = styled.form`
 `;
 
 const ContainerInput = styled.input`
-  width: 100%;
-  height: 50%;
+  width: 80%;
+  height: 2rem;
+  margin-bottom: 10%;
+  margin-left: 10%;
 
   background: rgba(255, 255, 255, 0.1);
   border-radius: 120px;
@@ -67,10 +84,11 @@ const ContainerInput = styled.input`
   -webkit-backdrop-filter: blur(2.2px);
   border: 1px solid rgba(255, 255, 255, 0.5);
 
-  background-image: url("icon_name.svg");
+  background-image: url("images/icon_login/icon_user.svg");
   background-repeat: no-repeat;
   background-position: left;
-  background-size: contain;
+  background-size: 2rem;
+  background-position-x: 0.3rem;
   padding-left: 40px;
   &:focus {
     border: 1px solid #0d4c92;
