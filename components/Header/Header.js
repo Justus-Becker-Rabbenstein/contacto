@@ -64,8 +64,8 @@ const ContainerHeader = styled.header`
 const ContainerUl = styled.ul`
   list-style-type: none;
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
   margin: 0;
 `;
 const ContainerNav = styled.nav`
