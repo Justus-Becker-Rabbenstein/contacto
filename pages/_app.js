@@ -6,7 +6,7 @@ import Header from "../components/Header/Header";
 
 function MyApp({Component, pageProps}) {
   /* Start: Logic for Login credential saving */
-  const [loginName, setLoginName] = useState("Miss Piggy");
+  const [loginName, setLoginName] = useState("User name");
   const handleSubmitLogin = onSubmitLogin => {
     setLoginName(onSubmitLogin);
   };
