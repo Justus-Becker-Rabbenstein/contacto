@@ -1,17 +1,8 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Lottie from "react-lottie";
-import animationData from "../../lotties/mascot.json";
+import Image from "next/image";
 
 const Header = ({menuClickStatus, onNavbarClick, onSubmitLogin}) => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
   //Sets bool value to render or not render navbar menu
   function handleMenuClickStatus() {
     onNavbarClick(!menuClickStatus);
@@ -31,11 +22,11 @@ const Header = ({menuClickStatus, onNavbarClick, onSubmitLogin}) => {
             alt="Burger menu"
             onClick={handleMenuClickStatus}
           />
-          <Lottie
-            options={defaultOptions}
-            height="100px"
-            width="100px"
-            style={{margin: 0}}
+          <Image
+            src="/images/icon_header/mascot.svg"
+            alt="contacto mascot"
+            width={75}
+            height={75}
           />
         </ContainerUl>
       </ContainerHeader>
@@ -95,6 +86,9 @@ const ContainerImgMenu = styled.img`
   width: 15%;
   height: 15%;
   align-self: center;
+  &:active {
+    background-color: #cff5e7;
+  }
   @media (min-width: 900px) {
     width: 10%;
   }
