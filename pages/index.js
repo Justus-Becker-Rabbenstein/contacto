@@ -25,8 +25,8 @@ export default function Home({loginName, onSubmitLogin}) {
             onSubmitLogin(e.currentTarget.value);
           }}
         />
+        <ContainerLink href="/myContacts">Login</ContainerLink>
       </ContainerForm>
-      <ContainerLink href="/myContacts">Login</ContainerLink>
     </ContainerDiv>
   );
 }
@@ -40,13 +40,16 @@ const ContainerHeadingOne = styled.h1`
   text-align: center;
   color: #001533;
 `;
-const ContainerForm = styled.form``;
+const ContainerForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+`;
 
 const ContainerInput = styled.input`
-  width: 70%;
+  width: 15rem;
   height: 2rem;
   margin-bottom: 10%;
-  margin-left: 15%;
 
   background: rgba(255, 255, 255, 0.1);
   border-radius: 120px;
@@ -70,10 +73,8 @@ const ContainerLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2vh;
-  width: 70%;
+  width: 15rem;
   height: 2rem;
-  margin-left: 15%;
 
   background: rgba(255, 255, 255, 0.1);
   border-radius: 120px;
