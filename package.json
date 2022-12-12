@@ -37,6 +37,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "babel-loader": "^8.3.0",
+    "canvas": "^2.10.2",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.4",
     "eslint-plugin-jest": "^27.1.6",
