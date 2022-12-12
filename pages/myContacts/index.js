@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import {useState} from "react";
 import Lottie from "react-lottie";
-import animationData from "../../lotties/mycontacts_search_animation.json";
+import animationData from "../../lotties/search.json";
 
 const MyContacts = ({userArray, onClickedUserName}) => {
   // Lottie config
@@ -30,7 +30,9 @@ const MyContacts = ({userArray, onClickedUserName}) => {
     <article>
       <header>
         <h6>Login/My Contacts</h6>
-        <Lottie options={defaultOptions} height="100px" width="100px" />
+        <ContainerLottieDiv>
+          <Lottie options={defaultOptions} height="100px" width="100px" />
+        </ContainerLottieDiv>
         <ContainerSearchInput
           type="text"
           placeholder="Search by name ..."
@@ -130,7 +132,7 @@ const ContainerProfileImage = styled.img`
   border-radius: 100%;
   height: 6em;
   width: 6em;
-  border: 1px solid white;
+  object-fit: cover;
 `;
 const ContainerHeader = styled.header`
   width: 80%;
@@ -140,7 +142,6 @@ const ContainerDiv = styled.div`
   background-color: white;
   border-radius: 10px;
   width: 80%;
-  height: auto;
   margin: 3px;
   &:last-child {
     margin-bottom: 10%;
@@ -150,11 +151,9 @@ const ContainerParagraph = styled.p`
   padding-left: 3px;
 `;
 const ContainerIcon = styled.img`
-  width: 35px;
-  margin: 0px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  margin-bottom: -6px;
+  width: 3rem;
+  align-self: center;
+  height: fit-content;
 `;
 const ContainerSearchInput = styled.input`
   background-image: url("images/icon_search/icon_search.svg");
@@ -168,4 +167,9 @@ const ContainerSearchInput = styled.input`
   margin-left: 10%;
   margin-bottom: 5%;
   margin-top: 2%;
+`;
+const ContainerLottieDiv = styled.div`
+  position: absolute;
+  right: 0;
+  top: 13%;
 `;

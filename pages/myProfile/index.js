@@ -101,6 +101,7 @@ const ContainerProfileImage = styled.img`
   border: 1px solid #001533;
   margin-bottom: 5%;
   margin-top: 5%;
+  object-fit: cover;
 `;
 
 const ContainerButtonEdit = styled.button`
