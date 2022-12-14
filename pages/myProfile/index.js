@@ -42,8 +42,13 @@ const MyProfile = ({loginName, userArray}) => {
   const {handleSubmit, handleChange, values} = useFormik({
     initialValues: ownProfileUser,
     enableReinitialize: true,
-    onSubmit: ({name}) => {
-      alert(`Name: ${name}`);
+    onSubmit: values => {
+      setOwnProfileUser(values);
+      //find index and replace array item
+      const indexOfUser = userArray.findIndex(
+        userIndex => userIndex.id == values.id
+      );
+      userArray.splice(indexOfUser, 1, values);
     },
   });
 
