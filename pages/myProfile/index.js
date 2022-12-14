@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Lottie from "react-lottie";
+import {useFormik} from "formik";
 import animationData from "../../lotties/ownprofile.json";
+import {useState} from "react";
+import {useEffect} from "react";
 
-const myProfile = ({loginName, userArray}) => {
+const MyProfile = ({loginName, userArray}) => {
   // Lottie config
   const defaultOptions = {
     loop: true,
@@ -13,40 +16,77 @@ const myProfile = ({loginName, userArray}) => {
     },
   };
   // parses loginName String to Object to be able to compare them in the checkLoggedInUser Method
-  const loginNameObject = {name: `${loginName}`};
-  const checkLoggedInUser = userArray.filter(function (user) {
-    return user.name == loginNameObject.name;
+  const [ownProfileUser, setOwnProfileUser] = useState();
+  useEffect(() => {
+    //first
+    const loginNameObject = {name: `${loginName}`};
+    const checkLoggedInUser = userArray.filter(function (user) {
+      return user.name == loginNameObject.name;
+    });
+    const singleObject = {
+      id: checkLoggedInUser[0].id,
+      name: checkLoggedInUser[0].name,
+      address: checkLoggedInUser[0].address,
+      email: checkLoggedInUser[0].email,
+      phone: checkLoggedInUser[0].phone,
+      website: checkLoggedInUser[0].website,
+      image: checkLoggedInUser[0].image,
+    };
+    return () => {
+      //second
+      setOwnProfileUser(singleObject);
+    };
+  }, []);
+
+  // Form Submit Logic with Formik library for React
+  const {handleSubmit, handleChange, values} = useFormik({
+    initialValues: ownProfileUser,
+    enableReinitialize: true,
+    onSubmit: ({name}) => {
+      alert(`Name: ${name}`);
+    },
   });
 
-  // Edit logic
-  function handleNameChange(event) {
-    checkLoggedInUser[0].name = event.target.value;
-    console.log(checkLoggedInUser[0].name, event.target.value);
-  }
   return (
     <>
-      {console.log(checkLoggedInUser)}
       <h6>Login/My Profile</h6>
-      <ContainerDiv>
+      <ContainerForm onSubmit={handleSubmit}>
         <ContainerLottie>
           <Lottie options={defaultOptions} height="5rem" width="5rem" />
         </ContainerLottie>
         {loginName !== "User name" ? (
           <>
             <ContainerProfileImage
-              src={checkLoggedInUser[0].image}
-              alt={checkLoggedInUser[0].name}
               height="50vh"
               width="50vw"
+              src={values ? values.image : "Awaiting data ..."}
+              alt={values ? values.name : "Awaiting data ..."}
             />
             <ContainerTextareaName
-              value={checkLoggedInUser[0].name}
-              onChange={handleNameChange}
+              value={values ? values.name : "Awaiting data ..."}
+              name="name"
+              onChange={handleChange}
             />
-            <ContainerTextareaAddress value={checkLoggedInUser[0].address} />
-            <ContainerTextareaEmail value={checkLoggedInUser[0].email} />
-            <ContainerTextareaPhone value={checkLoggedInUser[0].phone} />
-            <ContainerTextareaWebsite value={checkLoggedInUser[0].website} />
+            <ContainerTextareaAddress
+              value={values ? values.address : "Awaiting data ..."}
+              name="address"
+              onChange={handleChange}
+            />
+            <ContainerTextareaEmail
+              value={values ? values.email : "Awaiting data ..."}
+              name="email"
+              onChange={handleChange}
+            />
+            <ContainerTextareaPhone
+              value={values ? values.phone : "Awaiting data ..."}
+              name="phone"
+              onChange={handleChange}
+            />
+            <ContainerTextareaWebsite
+              value={values ? values.website : "Awaiting data ..."}
+              name="website"
+              onChange={handleChange}
+            />
             <ContainerFlexDiv>
               <ContainerButtonUpdate>Update</ContainerButtonUpdate>
             </ContainerFlexDiv>
@@ -54,12 +94,12 @@ const myProfile = ({loginName, userArray}) => {
         ) : (
           <p>No Data Found.</p>
         )}
-      </ContainerDiv>
+      </ContainerForm>
     </>
   );
 };
 
-export default myProfile;
+export default MyProfile;
 
 const ContainerParentTextarea = styled.textarea`
   background-repeat: no-repeat;
@@ -81,7 +121,7 @@ const ContainerParentButton = styled.button`
   background-position-x: 0.3rem;
   background-position-y: 0.1rem;
 `;
-const ContainerDiv = styled.div`
+const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
