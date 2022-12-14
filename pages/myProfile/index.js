@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/ownprofile.json";
@@ -15,36 +14,43 @@ const myProfile = ({loginName, userArray}) => {
   };
   // parses loginName String to Object to be able to compare them in the checkLoggedInUser Method
   const loginNameObject = {name: `${loginName}`};
-  const checkLoggedInUser = userArray.filter(user => {
+  const checkLoggedInUser = userArray.filter(function (user) {
     return user.name == loginNameObject.name;
   });
 
+  // Edit logic
+  function handleNameChange(event) {
+    checkLoggedInUser[0].name = event.target.value;
+    console.log(checkLoggedInUser[0].name, event.target.value);
+  }
   return (
     <>
+      {console.log(checkLoggedInUser)}
       <h6>Login/My Profile</h6>
       <ContainerDiv>
         <ContainerLottie>
           <Lottie options={defaultOptions} height="5rem" width="5rem" />
         </ContainerLottie>
         {loginName !== "User name" ? (
-          checkLoggedInUser.map(user => {
-            return (
-              <>
-                <ContainerProfileImage
-                  src={user.image}
-                  alt={user.name}
-                  height="50vh"
-                  width="50vw"
-                />
-                <ContainerTextareaName disabled value={user.name} />
-                <ContainerTextareaAddress disabled value={user.address} />
-                <ContainerTextareaEmail disabled value={user.email} />
-                <ContainerTextareaPhone disabled value={user.phone} />
-                <ContainerTextareaWebsite disabled value={user.website} />
-                <ContainerButtonEdit>Edit</ContainerButtonEdit>
-              </>
-            );
-          })
+          <>
+            <ContainerProfileImage
+              src={checkLoggedInUser[0].image}
+              alt={checkLoggedInUser[0].name}
+              height="50vh"
+              width="50vw"
+            />
+            <ContainerTextareaName
+              value={checkLoggedInUser[0].name}
+              onChange={handleNameChange}
+            />
+            <ContainerTextareaAddress value={checkLoggedInUser[0].address} />
+            <ContainerTextareaEmail value={checkLoggedInUser[0].email} />
+            <ContainerTextareaPhone value={checkLoggedInUser[0].phone} />
+            <ContainerTextareaWebsite value={checkLoggedInUser[0].website} />
+            <ContainerFlexDiv>
+              <ContainerButtonUpdate>Update</ContainerButtonUpdate>
+            </ContainerFlexDiv>
+          </>
         ) : (
           <p>No Data Found.</p>
         )}
@@ -62,6 +68,18 @@ const ContainerParentTextarea = styled.textarea`
   background-position-x: left;
   background-position-y: bottom;
   background-size: 2rem;
+`;
+const ContainerParentButton = styled.button`
+  width: 14rem;
+  height: 2rem;
+  margin-top: 10%;
+  margin-bottom: 10%;
+
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 1.5rem;
+  background-position-x: 0.3rem;
+  background-position-y: 0.1rem;
 `;
 const ContainerDiv = styled.div`
   display: flex;
@@ -104,21 +122,14 @@ const ContainerProfileImage = styled.img`
   object-fit: cover;
 `;
 
-const ContainerButtonEdit = styled.button`
-  width: 15rem;
-  height: 2rem;
-  margin-top: 10%;
-  margin-bottom: 10%;
-
+const ContainerButtonUpdate = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_edit.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 1.5rem;
-  background-position-x: 0.3rem;
-  background-position-y: 0.1rem;
 `;
 const ContainerLottie = styled.div`
   position: absolute;
   right: -2rem;
   top: -2rem;
+`;
+const ContainerFlexDiv = styled.div`
+  display: flex;
 `;

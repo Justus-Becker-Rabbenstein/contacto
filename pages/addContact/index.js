@@ -57,25 +57,18 @@ const AddContact = ({userArray, onClickedAddUser}) => {
           name="image"
           onClick={handleImgClicked}
         />
-        <ContainerTextareaName name="name" placeholder="Enter contact name" />
-        <ContainerTextareaAddress
-          name="address"
-          placeholder="Enter contact address"
-        />
+        <ContainerTextareaName name="name" placeholder="Enter name" />
+        <ContainerTextareaAddress name="address" placeholder="Enter address" />
         <ContainerInputEmail
           type="email"
           name="email"
-          placeholder="Enter contact email"
+          placeholder="Enter email"
         />
-        <ContainerInputPhone
-          type="tel"
-          name="phone"
-          placeholder="Enter contact phone number"
-        />
+        <ContainerInputPhone type="tel" name="phone" placeholder="+49 ..." />
         <ContainerInputaWebsite
           type="url"
           name="website"
-          placeholder="Enter contact website"
+          placeholder="https://www. ..."
         />
         <ContainerButtonSubmit type="Submit">Submit</ContainerButtonSubmit>
       </ContainerForm>
