@@ -108,7 +108,9 @@ const MyProfile = ({loginName, userArray}) => {
               onChange={handleChange}
             />
             <ContainerFlexDiv>
-              <ContainerButtonUpdate>Update</ContainerButtonUpdate>
+              <ContainerButtonUpdate type="submit">
+                Update
+              </ContainerButtonUpdate>
             </ContainerFlexDiv>
           </>
         ) : (
