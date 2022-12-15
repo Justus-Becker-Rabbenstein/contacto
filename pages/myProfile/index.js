@@ -68,9 +68,9 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
   }
 
   if (!values) {
-    {
-      console.log(values, typeof values);
-    }
+    setTimeout(function () {
+      console.log("Executed after 1 second");
+    }, 1000);
     return null;
   }
   return (
