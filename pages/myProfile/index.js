@@ -68,6 +68,9 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
   }
 
   if (!values) {
+    {
+      console.log(values, typeof values);
+    }
     return null;
   }
   return (
