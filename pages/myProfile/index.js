@@ -69,13 +69,13 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
 
   return (
     <>
-      <h6>Login/My Profile</h6>
-      <ContainerForm onSubmit={handleSubmit}>
-        <ContainerLottie>
-          <Lottie options={defaultOptions} height="5rem" width="5rem" />
-        </ContainerLottie>
-        {loginName !== "User name" ? (
-          <>
+      {values ? (
+        <>
+          <h6>Login/My Profile</h6>
+          <ContainerForm onSubmit={handleSubmit}>
+            <ContainerLottie>
+              <Lottie options={defaultOptions} height="5rem" width="5rem" />
+            </ContainerLottie>
             <ContainerProfileImage
               height="50vh"
               width="50vw"
@@ -113,11 +113,11 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
                 Update
               </ContainerButtonUpdate>
             </ContainerFlexDiv>
-          </>
-        ) : (
-          <p>No Data Found.</p>
-        )}
-      </ContainerForm>
+          </ContainerForm>
+        </>
+      ) : (
+        <p>No data found.</p>
+      )}
     </>
   );
 };
