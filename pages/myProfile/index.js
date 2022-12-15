@@ -6,6 +6,7 @@ import {useState} from "react";
 import {useEffect} from "react";
 
 const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
+  const [ownProfileUser, setOwnProfileUser] = useState();
   // Lottie config
   const defaultOptions = {
     loop: true,
@@ -15,8 +16,23 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
+  // Form Submit Logic with Formik library for React (Textareas)
+  const {handleSubmit, handleChange, values} = useFormik({
+    initialValues: ownProfileUser,
+    enableReinitialize: true,
+    onSubmit: values => {
+      onSubmitLogin(values.name);
+      setOwnProfileUser(values);
+      //find index and replace array item
+      const indexOfUser = userArray.findIndex(
+        userIndex => userIndex.id == values.id
+      );
+      userArray.splice(indexOfUser, 1, values);
+      alert("Own profile successfully updated.");
+    },
+  });
   // parses loginName String to Object to be able to compare them in the checkLoggedInUser Method
-  const [ownProfileUser, setOwnProfileUser] = useState();
   useEffect(() => {
     //first
     const loginNameObject = {name: loginName};
@@ -42,22 +58,6 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
       setOwnProfileUser(singleObject);
     };
   }, [values]);
-
-  // Form Submit Logic with Formik library for React (Textareas)
-  const {handleSubmit, handleChange, values} = useFormik({
-    initialValues: ownProfileUser,
-    enableReinitialize: true,
-    onSubmit: values => {
-      onSubmitLogin(values.name);
-      setOwnProfileUser(values);
-      //find index and replace array item
-      const indexOfUser = userArray.findIndex(
-        userIndex => userIndex.id == values.id
-      );
-      userArray.splice(indexOfUser, 1, values);
-      alert("Own profile successfully updated.");
-    },
-  });
   // Image Logic Update Logic
   function handleImgClicked() {
     let imgUrlVar = window.prompt(
