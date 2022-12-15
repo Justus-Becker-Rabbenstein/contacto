@@ -5,7 +5,7 @@ import animationData from "../../lotties/ownprofile.json";
 import {useState} from "react";
 import {useEffect} from "react";
 
-const MyProfile = ({loginName, userArray}) => {
+const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
   // Lottie config
   const defaultOptions = {
     loop: true,
@@ -48,6 +48,7 @@ const MyProfile = ({loginName, userArray}) => {
     initialValues: ownProfileUser,
     enableReinitialize: true,
     onSubmit: values => {
+      onSubmitLogin(values.name);
       setOwnProfileUser(values);
       //find index and replace array item
       const indexOfUser = userArray.findIndex(
