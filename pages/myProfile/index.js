@@ -20,19 +20,19 @@ const MyProfile = ({loginName, userArray}) => {
   useEffect(() => {
     //first
     const loginNameObject = {name: loginName};
-    const checkLoggedInUser = userArray.filter(function (user) {
+    const checkLoggedInUser = userArray.find(function (user) {
       return user.name == loginNameObject.name;
     });
     let singleObject = {};
     try {
       singleObject = {
-        id: checkLoggedInUser[0].id,
-        name: checkLoggedInUser[0].name,
-        address: checkLoggedInUser[0].address,
-        email: checkLoggedInUser[0].email,
-        phone: checkLoggedInUser[0].phone,
-        website: checkLoggedInUser[0].website,
-        image: checkLoggedInUser[0].image,
+        id: checkLoggedInUser.id,
+        name: checkLoggedInUser.name,
+        address: checkLoggedInUser.address,
+        email: checkLoggedInUser.email,
+        phone: checkLoggedInUser.phone,
+        website: checkLoggedInUser.website,
+        image: checkLoggedInUser.image,
       };
     } catch (error) {
       alert("No user logged in. Please login.");
