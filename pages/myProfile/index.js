@@ -116,7 +116,7 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
           </ContainerForm>
         </>
       ) : (
-        <p>No data found.</p>
+        <p>{values}</p>
       )}
     </>
   );
