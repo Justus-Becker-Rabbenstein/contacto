@@ -19,7 +19,7 @@ const MyProfile = ({loginName, userArray}) => {
   const [ownProfileUser, setOwnProfileUser] = useState();
   useEffect(() => {
     //first
-    const loginNameObject = {name: `${loginName}`};
+    const loginNameObject = {name: loginName};
     const checkLoggedInUser = userArray.filter(function (user) {
       return user.name == loginNameObject.name;
     });
