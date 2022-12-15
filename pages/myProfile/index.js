@@ -6,6 +6,8 @@ import {useState} from "react";
 import {useEffect} from "react";
 
 const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
+  //const ownProfileUser=userArray.find((user)=>user.name===loginName)
+
   const [ownProfileUser, setOwnProfileUser] = useState();
   // Lottie config
   const defaultOptions = {
@@ -57,7 +59,7 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
       //second
       setOwnProfileUser(singleObject);
     };
-  }, [values]);
+  }, []);
   // Image Logic Update Logic
   function handleImgClicked() {
     let imgUrlVar = window.prompt(
