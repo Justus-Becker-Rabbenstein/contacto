@@ -41,7 +41,7 @@ const MyProfile = ({loginName, userArray}) => {
       //second
       setOwnProfileUser(singleObject);
     };
-  }, []);
+  }, [loginName]);
 
   // Form Submit Logic with Formik library for React (Textareas)
   const {handleSubmit, handleChange, values} = useFormik({
