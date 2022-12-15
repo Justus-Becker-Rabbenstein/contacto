@@ -41,7 +41,7 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
       //second
       setOwnProfileUser(singleObject);
     };
-  }, [loginName]);
+  }, [values]);
 
   // Form Submit Logic with Formik library for React (Textareas)
   const {handleSubmit, handleChange, values} = useFormik({
@@ -72,7 +72,6 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
   }
   return (
     <>
-      {console.log(values)}
       <h6>Login/My Profile</h6>
       <ContainerForm onSubmit={handleSubmit}>
         <ContainerLottie>

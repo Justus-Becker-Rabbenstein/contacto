@@ -68,6 +68,9 @@ const ContainerInput = styled.input`
     border: 1px solid #0d4c92;
     background-color: #cff5e7;
   }
+  &:hover {
+    border: 3px solid #cff5e7;
+  }
 `;
 const ContainerLink = styled(Link)`
   display: flex;
@@ -89,7 +92,10 @@ const ContainerLink = styled(Link)`
   background-position-x: 0.5rem;
   background-position-y: 0.2rem;
 
-  &:active {
+  :active {
     background-color: #cff5e7;
+  }
+  &:hover {
+    border: 3px solid #cff5e7;
   }
 `;
