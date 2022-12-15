@@ -67,9 +67,6 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
     values.image = imgUrlVar;
   }
 
-  if (!values) {
-    return null;
-  }
   return (
     <>
       <h6>Login/My Profile</h6>
