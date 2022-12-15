@@ -2,13 +2,11 @@ import styled from "styled-components";
 import Lottie from "react-lottie";
 import {useFormik} from "formik";
 import animationData from "../../lotties/ownprofile.json";
-import {useState} from "react";
-import {useEffect} from "react";
 
-const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
-  //const ownProfileUser=userArray.find((user)=>user.name===loginName)
+const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
+  const ownProfileUser = userArray.find(user => user.name === loginName);
 
-  const [ownProfileUser, setOwnProfileUser] = useState();
+  //const [ownProfileUser, setOwnProfileUser] = useState();
   // Lottie config
   const defaultOptions = {
     loop: true,
@@ -25,17 +23,17 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
     enableReinitialize: true,
     onSubmit: values => {
       onSubmitLogin(values.name);
-      setOwnProfileUser(values);
+      onUpdateUser(values);
       //find index and replace array item
-      const indexOfUser = userArray.findIndex(
+      /* const indexOfUser = userArray.findIndex(
         userIndex => userIndex.id == values.id
       );
-      userArray.splice(indexOfUser, 1, values);
+      userArray.splice(indexOfUser, 1, values);*/
       alert("Own profile successfully updated.");
     },
   });
   // parses loginName String to Object to be able to compare them in the checkLoggedInUser Method
-  useEffect(() => {
+  /* useEffect(() => {
     //first
     const loginNameObject = {name: loginName};
     const checkLoggedInUser = userArray.find(function (user) {
@@ -59,7 +57,7 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
       //second
       setOwnProfileUser(singleObject);
     };
-  }, []);
+  }, []); */
   // Image Logic Update Logic
   function handleImgClicked() {
     let imgUrlVar = window.prompt(

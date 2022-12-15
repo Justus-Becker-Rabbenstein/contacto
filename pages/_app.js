@@ -34,6 +34,18 @@ function MyApp({Component, pageProps}) {
   };
   /* End: Logic Userarray import */
 
+  const handleUpdateUser = updatedUser => {
+    setUserArray(
+      userArray.map(user => {
+        if (user.id === updatedUser.id) {
+          return updatedUser;
+        } else {
+          return user;
+        }
+      })
+    );
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -50,6 +62,7 @@ function MyApp({Component, pageProps}) {
         onClickedAddUser={handleNewUserArrayValue}
         clickedName={clickedName}
         onClickedUserName={handleUserNameClicked}
+        onUpdateUser={handleUpdateUser}
       />
       <Footer />
     </>
