@@ -67,55 +67,59 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
     values.image = imgUrlVar;
   }
 
-  if (!values) {
-    return null;
-  } else {
-    return (
-      <>
-        <h6>Login/My Profile</h6>
-        <ContainerForm onSubmit={handleSubmit}>
-          <ContainerLottie>
-            <Lottie options={defaultOptions} height="5rem" width="5rem" />
-          </ContainerLottie>
-          <ContainerProfileImage
-            height="50vh"
-            width="50vw"
-            src={values ? values.image : "Awaiting data ..."}
-            alt={values ? values.name : "Awaiting data ..."}
-            onClick={handleImgClicked}
-          />
-          <ContainerTextareaName
-            value={values ? values.name : "Awaiting data ..."}
-            name="name"
-            onChange={handleChange}
-          />
-          <ContainerTextareaAddress
-            value={values ? values.address : "Awaiting data ..."}
-            name="address"
-            onChange={handleChange}
-          />
-          <ContainerTextareaEmail
-            value={values ? values.email : "Awaiting data ..."}
-            name="email"
-            onChange={handleChange}
-          />
-          <ContainerTextareaPhone
-            value={values ? values.phone : "Awaiting data ..."}
-            name="phone"
-            onChange={handleChange}
-          />
-          <ContainerTextareaWebsite
-            value={values ? values.website : "Awaiting data ..."}
-            name="website"
-            onChange={handleChange}
-          />
-          <ContainerFlexDiv>
-            <ContainerButtonUpdate type="submit">Update</ContainerButtonUpdate>
-          </ContainerFlexDiv>
-        </ContainerForm>
-      </>
-    );
-  }
+  do {
+    if (!values) {
+      return <p>No data found.</p>;
+    } else {
+      return (
+        <>
+          <h6>Login/My Profile</h6>
+          <ContainerForm onSubmit={handleSubmit}>
+            <ContainerLottie>
+              <Lottie options={defaultOptions} height="5rem" width="5rem" />
+            </ContainerLottie>
+            <ContainerProfileImage
+              height="50vh"
+              width="50vw"
+              src={values ? values.image : "Awaiting data ..."}
+              alt={values ? values.name : "Awaiting data ..."}
+              onClick={handleImgClicked}
+            />
+            <ContainerTextareaName
+              value={values ? values.name : "Awaiting data ..."}
+              name="name"
+              onChange={handleChange}
+            />
+            <ContainerTextareaAddress
+              value={values ? values.address : "Awaiting data ..."}
+              name="address"
+              onChange={handleChange}
+            />
+            <ContainerTextareaEmail
+              value={values ? values.email : "Awaiting data ..."}
+              name="email"
+              onChange={handleChange}
+            />
+            <ContainerTextareaPhone
+              value={values ? values.phone : "Awaiting data ..."}
+              name="phone"
+              onChange={handleChange}
+            />
+            <ContainerTextareaWebsite
+              value={values ? values.website : "Awaiting data ..."}
+              name="website"
+              onChange={handleChange}
+            />
+            <ContainerFlexDiv>
+              <ContainerButtonUpdate type="submit">
+                Update
+              </ContainerButtonUpdate>
+            </ContainerFlexDiv>
+          </ContainerForm>
+        </>
+      );
+    }
+  } while (!values);
 };
 
 export default MyProfile;
