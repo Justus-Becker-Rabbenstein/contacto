@@ -23,22 +23,27 @@ const MyProfile = ({loginName, userArray}) => {
     const checkLoggedInUser = userArray.filter(function (user) {
       return user.name == loginNameObject.name;
     });
-    const singleObject = {
-      id: checkLoggedInUser[0].id,
-      name: checkLoggedInUser[0].name,
-      address: checkLoggedInUser[0].address,
-      email: checkLoggedInUser[0].email,
-      phone: checkLoggedInUser[0].phone,
-      website: checkLoggedInUser[0].website,
-      image: checkLoggedInUser[0].image,
-    };
+    let singleObject = {};
+    try {
+      singleObject = {
+        id: checkLoggedInUser[0].id,
+        name: checkLoggedInUser[0].name,
+        address: checkLoggedInUser[0].address,
+        email: checkLoggedInUser[0].email,
+        phone: checkLoggedInUser[0].phone,
+        website: checkLoggedInUser[0].website,
+        image: checkLoggedInUser[0].image,
+      };
+    } catch (error) {
+      alert("No user logged in. Please login.");
+    }
     return () => {
       //second
       setOwnProfileUser(singleObject);
     };
   }, []);
 
-  // Form Submit Logic with Formik library for React
+  // Form Submit Logic with Formik library for React (Textareas)
   const {handleSubmit, handleChange, values} = useFormik({
     initialValues: ownProfileUser,
     enableReinitialize: true,
@@ -49,8 +54,17 @@ const MyProfile = ({loginName, userArray}) => {
         userIndex => userIndex.id == values.id
       );
       userArray.splice(indexOfUser, 1, values);
+      alert("Own profile successfully updated.");
     },
   });
+  // Image Logic Update Logic
+  function handleImgClicked() {
+    let imgUrlVar = window.prompt(
+      "Please enter a url for your image: (new image will be shown on button update)",
+      "http://imageurl.com"
+    );
+    values.image = imgUrlVar;
+  }
 
   return (
     <>
@@ -66,6 +80,7 @@ const MyProfile = ({loginName, userArray}) => {
               width="50vw"
               src={values ? values.image : "Awaiting data ..."}
               alt={values ? values.name : "Awaiting data ..."}
+              onClick={handleImgClicked}
             />
             <ContainerTextareaName
               value={values ? values.name : "Awaiting data ..."}
