@@ -69,6 +69,7 @@ const MyProfile = ({loginName, onSubmitLogin, userArray}) => {
 
   return (
     <>
+      <button onClick={() => console.log(values)}>test</button>
       <h6>Login/My Profile</h6>
       <ContainerForm onSubmit={handleSubmit}>
         <ContainerLottie>
