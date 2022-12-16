@@ -5,35 +5,39 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 
 function MyApp({Component, pageProps}) {
-  /* Start: Logic for Login credential saving */
+  /* 
+  Notes:
+  localStorage
+  https://github.com/pixelass/local-storage-next/blob/main/hooks/useLocalStorage.js
+*/
+
+  // this state saves the user name in the login screen
   const [loginName, setLoginName] = useState("User name");
+  /* Saves the user name that is clicked in pages/myContacts to 
+be able to compare it to userarray for displaying a single user */
+  const [clickedName, setClickedName] = useState("");
+  // bool value to conditionally render navbar burger menu
+  const [menuClickStatus, setOnMenuClickStatus] = useState(false);
+  // imports userarray from _/db/dbArray.js into state
+  const [userArray, setUserArray] = useState(dbArray);
+
+  // State uplifting: Saves the username from login screen pages/index.js
   const handleSubmitLogin = onSubmitLogin => {
     setLoginName(onSubmitLogin);
   };
-  /* End: Logic for Login credential saving */
-
-  /* Start: useState saves clicked user in myContacts to 
-  compare to logged in user */
-  const [clickedName, setClickedName] = useState("");
+  // State uplifting: setter single contact clicked
   const handleUserNameClicked = onClickedUserName => {
     setClickedName(onClickedUserName);
   };
-  /* End:  useState myContacts compare */
-
-  /* Start: Logic Navigation */
-  const [menuClickStatus, setOnMenuClickStatus] = useState(false);
+  // State uplifting: setter navbar menu
   function handleNavbarClick(onNavbarClicked) {
     setOnMenuClickStatus(onNavbarClicked);
   }
-  /* End: Logic Navigation */
-
-  /* Start: Logic Userarray import */
-  const [userArray, setUserArray] = useState(dbArray);
+  // State uplifting: setter userarray new user add
   const handleNewUserArrayValue = onClickedAddUser => {
     setUserArray([...userArray, onClickedAddUser]);
   };
-  /* End: Logic Userarray import */
-
+  // State uplifting: setter userarry rewrite user on update
   const handleUpdateUser = updatedUser => {
     setUserArray(
       userArray.map(user => {

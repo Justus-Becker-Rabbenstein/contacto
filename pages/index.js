@@ -2,9 +2,10 @@ import styled from "styled-components";
 import Link from "next/link";
 import Lottie from "react-lottie";
 import animationData from "../lotties/login_animation.json";
+import {useRouter} from "next/navigation";
 
 export default function Home({loginName, onSubmitLogin}) {
-  // Lottie config
+  // Config for Lottie SVG animation
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,6 +14,9 @@ export default function Home({loginName, onSubmitLogin}) {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  // initialize router for pushing page to mycontacts on enter
+  const router = useRouter();
+
   return (
     <ContainerDiv>
       <ContainerHeadingOne>Login</ContainerHeadingOne>
@@ -24,6 +28,9 @@ export default function Home({loginName, onSubmitLogin}) {
           onChange={e => {
             onSubmitLogin(e.currentTarget.value);
           }}
+          onKeyPress={e =>
+            e.key === "Enter" ? router.push("/myContacts") : ""
+          }
         />
         <ContainerLink href="/myContacts">Login</ContainerLink>
       </ContainerForm>

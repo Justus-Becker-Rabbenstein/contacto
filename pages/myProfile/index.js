@@ -6,8 +6,7 @@ import animationData from "../../lotties/ownprofile.json";
 const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
   const ownProfileUser = userArray.find(user => user.name === loginName);
 
-  //const [ownProfileUser, setOwnProfileUser] = useState();
-  // Lottie config
+  // Config for Lottie SVG animation
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -17,6 +16,7 @@ const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
     },
   };
 
+  // this updates the data in the user data array
   // Form Submit Logic with Formik library for React (Textareas)
   const {handleSubmit, handleChange, values} = useFormik({
     initialValues: ownProfileUser,
@@ -24,40 +24,9 @@ const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
     onSubmit: values => {
       onSubmitLogin(values.name);
       onUpdateUser(values);
-      //find index and replace array item
-      /* const indexOfUser = userArray.findIndex(
-        userIndex => userIndex.id == values.id
-      );
-      userArray.splice(indexOfUser, 1, values);*/
       alert("Own profile successfully updated.");
     },
   });
-  // parses loginName String to Object to be able to compare them in the checkLoggedInUser Method
-  /* useEffect(() => {
-    //first
-    const loginNameObject = {name: loginName};
-    const checkLoggedInUser = userArray.find(function (user) {
-      return user.name == loginNameObject.name;
-    });
-    let singleObject = {};
-    try {
-      singleObject = {
-        id: checkLoggedInUser.id,
-        name: checkLoggedInUser.name,
-        address: checkLoggedInUser.address,
-        email: checkLoggedInUser.email,
-        phone: checkLoggedInUser.phone,
-        website: checkLoggedInUser.website,
-        image: checkLoggedInUser.image,
-      };
-    } catch (error) {
-      alert("No user logged in. Please login.");
-    }
-    return () => {
-      //second
-      setOwnProfileUser(singleObject);
-    };
-  }, []); */
   // Image Logic Update Logic
   function handleImgClicked() {
     let imgUrlVar = window.prompt(
@@ -69,7 +38,6 @@ const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
 
   return (
     <>
-      <button onClick={() => console.log(values)}>test</button>
       <h6>Login/My Profile</h6>
       <ContainerForm onSubmit={handleSubmit}>
         <ContainerLottie>
@@ -78,8 +46,8 @@ const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
         <ContainerProfileImage
           height="50vh"
           width="50vw"
-          src={values ? values.image : "Awaiting data ..."}
-          alt={values ? values.name : "Awaiting data ..."}
+          src={values ? values.image : ""}
+          alt={values ? values.name : "No image found"}
           onClick={handleImgClicked}
         />
         <ContainerTextareaName
