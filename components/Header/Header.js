@@ -81,6 +81,13 @@ const ContainerButton = styled.button`
   height: 100%;
   width: 33%;
   margin-left: 33%;
+
+  :active {
+    background-color: #cff5e7;
+  }
+  &:hover {
+    border: 3px solid #cff5e7;
+  }
 `;
 const ContainerImgMenu = styled.img`
   width: 15%;
