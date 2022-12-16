@@ -106,6 +106,13 @@ const ContainerMainButton = styled.button`
   width: 2rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+
+  :active {
+    background-color: #cff5e7;
+  }
+  &:hover {
+    border: 3px solid #cff5e7;
+  }
 `;
 const ContainerSection = styled.section`
   display: flex;

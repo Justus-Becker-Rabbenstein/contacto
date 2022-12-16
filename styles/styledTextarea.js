@@ -7,4 +7,11 @@ export const ContainerParentTextarea = styled.textarea`
   background-position-x: left;
   background-position-y: bottom;
   background-size: 2rem;
+
+  :active {
+    background-color: #cff5e7;
+  }
+  &:hover {
+    border: 3px solid #cff5e7;
+  }
 `;

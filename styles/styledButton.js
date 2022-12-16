@@ -10,4 +10,11 @@ export const ContainerParentButton = styled.button`
   background-position: left;
   background-size: 1.5rem;
   background-position-x: 0.3rem;
+
+  :active {
+    background-color: #cff5e7;
+  }
+  &:hover {
+    border: 3px solid #cff5e7;
+  }
 `;

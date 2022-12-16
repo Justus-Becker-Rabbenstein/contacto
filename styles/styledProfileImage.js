@@ -8,4 +8,11 @@ export const ContainerParentProfileImage = styled.img`
   margin-bottom: 5%;
   margin-top: 5%;
   object-fit: cover;
+
+  :active {
+    background-color: #cff5e7;
+  }
+  &:hover {
+    border: 3px solid #cff5e7;
+  }
 `;
