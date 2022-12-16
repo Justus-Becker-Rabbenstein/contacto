@@ -4,7 +4,7 @@ import Lottie from "react-lottie";
 import animationData from "../lotties/login_animation.json";
 
 export default function Home({loginName, onSubmitLogin}) {
-  // Lottie config
+  // Config for Lottie SVG animation
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,6 +13,7 @@ export default function Home({loginName, onSubmitLogin}) {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   return (
     <ContainerDiv>
       <ContainerHeadingOne>Login</ContainerHeadingOne>
@@ -22,6 +23,7 @@ export default function Home({loginName, onSubmitLogin}) {
           placeholder={loginName}
           type="text"
           onChange={e => {
+            console.log(loginName);
             onSubmitLogin(e.currentTarget.value);
           }}
         />
@@ -68,6 +70,9 @@ const ContainerInput = styled.input`
     border: 1px solid #0d4c92;
     background-color: #cff5e7;
   }
+  &:hover {
+    border: 3px solid #cff5e7;
+  }
 `;
 const ContainerLink = styled(Link)`
   display: flex;
@@ -89,7 +94,10 @@ const ContainerLink = styled(Link)`
   background-position-x: 0.5rem;
   background-position-y: 0.2rem;
 
-  &:active {
+  :active {
     background-color: #cff5e7;
+  }
+  &:hover {
+    border: 3px solid #cff5e7;
   }
 `;

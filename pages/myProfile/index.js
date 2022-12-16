@@ -1,10 +1,12 @@
-import React from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
+import {useFormik} from "formik";
 import animationData from "../../lotties/ownprofile.json";
 
-const myProfile = ({loginName, userArray}) => {
-  // Lottie config
+const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
+  const ownProfileUser = userArray.find(user => user.name === loginName);
+
+  // Config for Lottie SVG animation
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,47 +15,76 @@ const myProfile = ({loginName, userArray}) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  // parses loginName String to Object to be able to compare them in the checkLoggedInUser Method
-  const loginNameObject = {name: `${loginName}`};
-  const checkLoggedInUser = userArray.filter(user => {
-    return user.name == loginNameObject.name;
+
+  // this updates the data in the user data array
+  // Form Submit Logic with Formik library for React (Textareas)
+  const {handleSubmit, handleChange, values} = useFormik({
+    initialValues: ownProfileUser,
+    enableReinitialize: true,
+    onSubmit: values => {
+      onSubmitLogin(values.name);
+      onUpdateUser(values);
+      alert("Own profile successfully updated.");
+    },
   });
+  // Image Logic Update Logic
+  function handleImgClicked() {
+    let imgUrlVar = window.prompt(
+      "Please enter a url for your image: (new image will be shown on button update)",
+      "http://imageurl.com"
+    );
+    values.image = imgUrlVar;
+  }
 
   return (
     <>
       <h6>Login/My Profile</h6>
-      <ContainerDiv>
+      <button onClick={console.log(loginName)}>test</button>
+      <ContainerForm onSubmit={handleSubmit}>
         <ContainerLottie>
           <Lottie options={defaultOptions} height="5rem" width="5rem" />
         </ContainerLottie>
-        {loginName !== "User name" ? (
-          checkLoggedInUser.map(user => {
-            return (
-              <>
-                <ContainerProfileImage
-                  src={user.image}
-                  alt={user.name}
-                  height="50vh"
-                  width="50vw"
-                />
-                <ContainerTextareaName disabled value={user.name} />
-                <ContainerTextareaAddress disabled value={user.address} />
-                <ContainerTextareaEmail disabled value={user.email} />
-                <ContainerTextareaPhone disabled value={user.phone} />
-                <ContainerTextareaWebsite disabled value={user.website} />
-                <ContainerButtonEdit>Edit</ContainerButtonEdit>
-              </>
-            );
-          })
-        ) : (
-          <p>No Data Found.</p>
-        )}
-      </ContainerDiv>
+        <ContainerProfileImage
+          height="50vh"
+          width="50vw"
+          src={values ? values.image : ""}
+          alt={values ? values.name : "No image found"}
+          onClick={handleImgClicked}
+        />
+        <ContainerTextareaName
+          value={values ? values.name : "Awaiting data ..."}
+          name="name"
+          onChange={handleChange}
+        />
+        <ContainerTextareaAddress
+          value={values ? values.address : "Awaiting data ..."}
+          name="address"
+          onChange={handleChange}
+        />
+        <ContainerTextareaEmail
+          value={values ? values.email : "Awaiting data ..."}
+          name="email"
+          onChange={handleChange}
+        />
+        <ContainerTextareaPhone
+          value={values ? values.phone : "Awaiting data ..."}
+          name="phone"
+          onChange={handleChange}
+        />
+        <ContainerTextareaWebsite
+          value={values ? values.website : "Awaiting data ..."}
+          name="website"
+          onChange={handleChange}
+        />
+        <ContainerFlexDiv>
+          <ContainerButtonUpdate type="submit">Update</ContainerButtonUpdate>
+        </ContainerFlexDiv>
+      </ContainerForm>
     </>
   );
 };
 
-export default myProfile;
+export default MyProfile;
 
 const ContainerParentTextarea = styled.textarea`
   background-repeat: no-repeat;
@@ -63,7 +94,19 @@ const ContainerParentTextarea = styled.textarea`
   background-position-y: bottom;
   background-size: 2rem;
 `;
-const ContainerDiv = styled.div`
+const ContainerParentButton = styled.button`
+  width: 14rem;
+  height: 2rem;
+  margin-top: 10%;
+  margin-bottom: 10%;
+
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 1.5rem;
+  background-position-x: 0.3rem;
+  background-position-y: 0.1rem;
+`;
+const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,21 +147,14 @@ const ContainerProfileImage = styled.img`
   object-fit: cover;
 `;
 
-const ContainerButtonEdit = styled.button`
-  width: 15rem;
-  height: 2rem;
-  margin-top: 10%;
-  margin-bottom: 10%;
-
+const ContainerButtonUpdate = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_edit.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 1.5rem;
-  background-position-x: 0.3rem;
-  background-position-y: 0.1rem;
 `;
 const ContainerLottie = styled.div`
   position: absolute;
   right: -2rem;
   top: -2rem;
+`;
+const ContainerFlexDiv = styled.div`
+  display: flex;
 `;

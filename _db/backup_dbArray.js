@@ -6,7 +6,7 @@ export const dbArray = [
     email: "max@mustermail.de",
     phone: "+49800 3301000",
     website: "https://de.wikipedia.org/wiki/Mustermann",
-    image: "images/db_images/austin-wade-X6Uj51n5CE8-unsplash.jpg",
+    image: "/images/db_images/austin-wade-X6Uj51n5CE8-unsplash.jpg",
   },
   {
     id: 1,
@@ -15,7 +15,7 @@ export const dbArray = [
     email: "erika@mustermail.de",
     phone: "+49800 3301000",
     website: "https://de.wikipedia.org/wiki/Mustermann",
-    image: "images/db_images/christopher-campbell-rDEOVtE7vOs-unsplash.jpg",
+    image: "/images/db_images/christopher-campbell-rDEOVtE7vOs-unsplash.jpg",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ export const dbArray = [
     email: "john@doesmail.com",
     phone: "+49800 3301000",
     website: "https://de.wikipedia.org/wiki/John_Doe",
-    image: "images/db_images/robert-godwin-cdksyTqEXzo-unsplash.jpg",
+    image: "/images/db_images/robert-godwin-cdksyTqEXzo-unsplash.jpg",
   },
   {
     id: 3,
@@ -33,6 +33,6 @@ export const dbArray = [
     email: "jane@roesmail.com",
     phone: "+49800 3301000",
     website: "https://de.wikipedia.org/wiki/John_Doe",
-    image: "images/db_images/jake-nackos-IF9TK5Uy-KI-unsplash.jpg",
+    image: "/images/db_images/jake-nackos-IF9TK5Uy-KI-unsplash.jpg",
   },
 ];
