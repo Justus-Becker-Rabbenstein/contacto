@@ -44,8 +44,8 @@ const AddContact = ({userArray, onClickedAddUser}) => {
         <ContainerLottie>
           <Lottie
             options={lottieConfig(animationData)}
-            height="10rem"
-            width="10rem"
+            height={100}
+            width={100}
           />
         </ContainerLottie>
         <ContainerProfileImage
@@ -126,6 +126,6 @@ const ContainerButtonSubmit = styled(ContainerParentButton)`
 `;
 const ContainerLottie = styled.div`
   position: absolute;
-  right: -4.5rem;
-  top: -4.5rem;
+  right: -3rem;
+  top: -3rem;
 `;
