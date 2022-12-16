@@ -2,22 +2,13 @@ import styled from "styled-components";
 import Lottie from "react-lottie";
 import {useFormik} from "formik";
 import animationData from "../../lotties/ownprofile.json";
+import lottieConfig from "../../hooks/lottieConfig";
 import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
 const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
   const ownProfileUser = userArray.find(user => user.name === loginName);
-
-  // Config for Lottie SVG animation
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
 
   // this updates the data in the user data array
   // Form Submit Logic with Formik library for React (Textareas)
@@ -44,7 +35,11 @@ const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
       <h6>Login/My Profile</h6>
       <ContainerForm onSubmit={handleSubmit}>
         <ContainerLottie>
-          <Lottie options={defaultOptions} height="5rem" width="5rem" />
+          <Lottie
+            options={lottieConfig(animationData)}
+            height="5rem"
+            width="5rem"
+          />
         </ContainerLottie>
         <ContainerProfileImage
           height="50vh"

@@ -2,21 +2,13 @@ import {useState} from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/addcontact.json";
+import lottieConfig from "../../hooks/lottieConfig";
 import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
 const AddContact = ({userArray, onClickedAddUser}) => {
-  // Lottie config
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
+  // url of image of new profile
   const [imgUrl, setImgUrl] = useState("images/icon_addcontact/icon_image.svg");
 
   function handleImgClicked() {
@@ -50,7 +42,11 @@ const AddContact = ({userArray, onClickedAddUser}) => {
       <h6>Login/Add Contact</h6>
       <ContainerForm type="Submit" onSubmit={handleSubmit}>
         <ContainerLottie>
-          <Lottie options={defaultOptions} height="10rem" width="10rem" />
+          <Lottie
+            options={lottieConfig(animationData)}
+            height="10rem"
+            width="10rem"
+          />
         </ContainerLottie>
         <ContainerProfileImage
           src={imgUrl}

@@ -3,18 +3,9 @@ import Link from "next/link";
 import {useState} from "react";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/search.json";
+import lottieConfig from "../../hooks/lottieConfig";
 
 const MyContacts = ({userArray, onClickedUserName}) => {
-  // Lottie config
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   // useState Array for manipulation during search
   const [userArraySearch, setUserArraySearch] = useState(userArray);
 
@@ -31,7 +22,11 @@ const MyContacts = ({userArray, onClickedUserName}) => {
       <header>
         <h6>Login/My Contacts</h6>
         <ContainerLottieDiv>
-          <Lottie options={defaultOptions} height="100px" width="100px" />
+          <Lottie
+            options={lottieConfig(animationData)}
+            height="100px"
+            width="100px"
+          />
         </ContainerLottieDiv>
         <ContainerSearchInput
           type="text"

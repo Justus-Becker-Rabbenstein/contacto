@@ -1,20 +1,12 @@
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/singlecontact.json";
+import lottieConfig from "../../hooks/lottieConfig";
 import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
 const singleProfile = ({userArray, loginName, clickedName}) => {
-  // Lottie config
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
   //filters logged in user
   const loginNameObject = {name: `${loginName}`};
   const checkLoggedInUser = userArray.filter(user => {
@@ -52,7 +44,11 @@ const singleProfile = ({userArray, loginName, clickedName}) => {
         return (
           <ContainerSection key={`key-section-${user.id}`}>
             <ContainerLottie>
-              <Lottie options={defaultOptions} height="5rem" width="5rem" />
+              <Lottie
+                options={lottieConfig(animationData)}
+                height="5rem"
+                width="5rem"
+              />
             </ContainerLottie>
             <ContainerProfileImage
               src={user.image}

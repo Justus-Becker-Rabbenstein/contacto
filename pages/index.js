@@ -2,22 +2,17 @@ import styled from "styled-components";
 import Link from "next/link";
 import Lottie from "react-lottie";
 import animationData from "../lotties/login_animation.json";
+import lottieConfig from "../hooks/lottieConfig";
 
 export default function Home({loginName, onSubmitLogin}) {
-  // Config for Lottie SVG animation
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   return (
     <ContainerDiv>
       <ContainerHeadingOne>Login</ContainerHeadingOne>
-      <Lottie options={defaultOptions} height="100px" width="100px" />
+      <Lottie
+        options={lottieConfig(animationData)}
+        height="100px"
+        width="100px"
+      />
       <ContainerForm>
         <ContainerInput
           placeholder={loginName}
