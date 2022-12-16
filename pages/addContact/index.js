@@ -2,6 +2,9 @@ import {useState} from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/addcontact.json";
+import {ContainerParentTextarea} from "../../styles/styledTextarea";
+import {ContainerParentButton} from "../../styles/styledButton";
+import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
 const AddContact = ({userArray, onClickedAddUser}) => {
   // Lottie config
@@ -78,21 +81,12 @@ const AddContact = ({userArray, onClickedAddUser}) => {
 
 export default AddContact;
 
-const ContainerParentTextarea = styled.textarea`
-  background-repeat: no-repeat;
-  padding-left: 3rem;
-  border-radius: 1.5rem;
-  background-position-x: left;
-  background-position-y: bottom;
-  background-size: 2rem;
-`;
-
 const ContainerParentInput = styled.input`
+  height: 2.5rem;
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 3rem;
   border-radius: 1.5rem;
-  height: 2.5rem;
   background-position-x: left;
   background-position-y: bottom;
   background-size: 2rem;
@@ -129,26 +123,10 @@ const ContainerInputPhone = styled(ContainerParentInput)`
 const ContainerInputaWebsite = styled(ContainerParentInput)`
   background-image: url("images/icon_contact/icon_website.svg");
 `;
-const ContainerProfileImage = styled.img`
-  border-radius: 100%;
-  height: 8em;
-  width: 8em;
-  border: 1px solid #001533;
-  margin-bottom: 5%;
-  margin-top: 5%;
-`;
+const ContainerProfileImage = styled(ContainerParentProfileImage)``;
 
-const ContainerButtonSubmit = styled.button`
-  margin-top: 10%;
-  margin-bottom: 10%;
-  width: 12rem;
-  height: 2.5rem;
-
+const ContainerButtonSubmit = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_submit.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 1.5rem;
-  background-position-x: 0.3rem;
 `;
 const ContainerLottie = styled.div`
   position: absolute;

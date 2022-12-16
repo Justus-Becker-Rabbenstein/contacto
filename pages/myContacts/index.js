@@ -143,6 +143,7 @@ const ContainerDiv = styled.div`
   border-radius: 10px;
   width: 80%;
   margin: 3px;
+  padding-right: 1rem;
   line-break: anywhere;
   &:last-child {
     margin-bottom: 10%;

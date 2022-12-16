@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/singlecontact.json";
+import {ContainerParentTextarea} from "../../styles/styledTextarea";
+import {ContainerParentButton} from "../../styles/styledButton";
+import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
 const singleProfile = ({userArray, loginName, clickedName}) => {
   // Lottie config
@@ -94,16 +97,13 @@ const singleProfile = ({userArray, loginName, clickedName}) => {
 
 export default singleProfile;
 
-const ContainerParentTextarea = styled.textarea`
-  background-repeat: no-repeat;
-  background-position-x: left;
-  background-position-y: bottom;
-  background-size: 2rem;
-  padding-left: 3rem;
+const ContainerTextarea = styled(ContainerParentTextarea)`
   border-top-left-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 0rem;
+  border-top-right-radius: 0rem;
 `;
-const ContainerParentButton = styled.button`
+const ContainerMainButton = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -127,59 +127,41 @@ const ContainerSection = styled.section`
   -webkit-backdrop-filter: blur(2.2px);
   border: 1px solid rgba(255, 255, 255, 0.5);
 `;
-const ContainerTextareaName = styled(ContainerParentTextarea)`
+const ContainerTextareaName = styled(ContainerTextarea)`
   background-image: url("images/icon_contact/icon_name.svg");
   border-radius: 1.5rem;
   width: 15rem;
 `;
-const ContainerTextareaAddress = styled(ContainerParentTextarea)`
+const ContainerTextareaAddress = styled(ContainerTextarea)`
   background-image: url("images/icon_contact/icon_address.svg");
 `;
-const ContainerTextareaEmail = styled(ContainerParentTextarea)`
+const ContainerTextareaEmail = styled(ContainerTextarea)`
   background-image: url("images/icon_contact/icon_email.svg");
 `;
-const ContainerTextareaPhone = styled(ContainerParentTextarea)`
+const ContainerTextareaPhone = styled(ContainerTextarea)`
   background-image: url("images/icon_contact/icon_phone.svg");
 `;
-const ContainerTextareaWebsite = styled(ContainerParentTextarea)`
+const ContainerTextareaWebsite = styled(ContainerTextarea)`
   background-image: url("images/icon_contact/icon_website.svg");
 `;
-const ContainerProfileImage = styled.img`
-  border-radius: 100%;
-  height: 8em;
-  width: 8em;
-  border: 1px solid #001533;
-  margin-bottom: 5%;
-  margin-top: 5%;
-  object-fit: cover;
-`;
+const ContainerProfileImage = styled(ContainerParentProfileImage)``;
 
-const ContainerButtonEdit = styled.button`
-  width: 15rem;
-  height: 2rem;
-  margin-top: 10%;
-  margin-bottom: 10%;
-
+const ContainerButtonEdit = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_edit.svg");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 1.5rem;
-  background-position-x: 0.3rem;
-  background-position-y: 0.1rem;
 `;
 const ContainerDivFlex = styled.div`
   display: flex;
 `;
-const ContainerButtonVisitWebsite = styled(ContainerParentButton)`
+const ContainerButtonVisitWebsite = styled(ContainerMainButton)`
   background-image: url("images/icon_singleprofile_buttons/icon_visit_website.svg");
 `;
-const ContainerButtonSendEmail = styled(ContainerParentButton)`
+const ContainerButtonSendEmail = styled(ContainerMainButton)`
   background-image: url("images/icon_singleprofile_buttons/icon_sendemail.svg");
 `;
-const ContainerButtonPhone = styled(ContainerParentButton)`
+const ContainerButtonPhone = styled(ContainerMainButton)`
   background-image: url("images/icon_singleprofile_buttons/icon_call_phone.svg");
 `;
-const ContainerButtonRouteGooglemaps = styled(ContainerParentButton)`
+const ContainerButtonRouteGooglemaps = styled(ContainerMainButton)`
   background-image: url("images/icon_singleprofile_buttons/icon_route_googlemaps.svg");
 `;
 const ContainerLottie = styled.div`

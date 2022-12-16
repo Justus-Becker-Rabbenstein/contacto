@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Lottie from "react-lottie";
 import {useFormik} from "formik";
 import animationData from "../../lotties/ownprofile.json";
+import {ContainerParentTextarea} from "../../styles/styledTextarea";
+import {ContainerParentButton} from "../../styles/styledButton";
+import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
 const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
   const ownProfileUser = userArray.find(user => user.name === loginName);
@@ -85,26 +88,6 @@ const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
 
 export default MyProfile;
 
-const ContainerParentTextarea = styled.textarea`
-  background-repeat: no-repeat;
-  padding-left: 3rem;
-  border-radius: 1.5rem;
-  background-position-x: left;
-  background-position-y: bottom;
-  background-size: 2rem;
-`;
-const ContainerParentButton = styled.button`
-  width: 14rem;
-  height: 2rem;
-  margin-top: 10%;
-  margin-bottom: 10%;
-
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: 1.5rem;
-  background-position-x: 0.3rem;
-  background-position-y: 0.1rem;
-`;
 const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -136,15 +119,7 @@ const ContainerTextareaPhone = styled(ContainerParentTextarea)`
 const ContainerTextareaWebsite = styled(ContainerParentTextarea)`
   background-image: url("images/icon_contact/icon_website.svg");
 `;
-const ContainerProfileImage = styled.img`
-  border-radius: 100%;
-  height: 8em;
-  width: 8em;
-  border: 1px solid #001533;
-  margin-bottom: 5%;
-  margin-top: 5%;
-  object-fit: cover;
-`;
+const ContainerProfileImage = styled(ContainerParentProfileImage)``;
 
 const ContainerButtonUpdate = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_edit.svg");
