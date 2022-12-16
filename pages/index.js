@@ -23,7 +23,6 @@ export default function Home({loginName, onSubmitLogin}) {
           placeholder={loginName}
           type="text"
           onChange={e => {
-            console.log(loginName);
             onSubmitLogin(e.currentTarget.value);
           }}
         />

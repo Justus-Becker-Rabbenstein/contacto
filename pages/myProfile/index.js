@@ -39,7 +39,6 @@ const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
   return (
     <>
       <h6>Login/My Profile</h6>
-      <button onClick={console.log(loginName)}>test</button>
       <ContainerForm onSubmit={handleSubmit}>
         <ContainerLottie>
           <Lottie options={defaultOptions} height="5rem" width="5rem" />
