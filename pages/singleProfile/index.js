@@ -2,96 +2,148 @@ import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/singlecontact.json";
 import lottieConfig from "../../hooks/lottieConfig";
+import {useFormik} from "formik";
 import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
-const singleProfile = ({userArray, loginName, clickedName}) => {
-  //filters logged in user
-  const loginNameObject = {name: `${loginName}`};
-  const checkLoggedInUser = userArray.filter(user => {
-    return user.name == loginNameObject.name;
-  });
-  // filters single profile of my contacts
-  const clickedNameObject = {name: `${clickedName}`};
-  const checkClickedUser = userArray.filter(user => {
-    return user.name == clickedNameObject.name;
-  });
+const SingleProfile = ({
+  userArray,
+  loginName,
+  clickedName,
+  onClickedUserName,
+  onUpdateUser,
+}) => {
+  // find logged in User and the clicked user from my contacts
+  const ownProfileUser = userArray.find(user => user.name === loginName);
+  const clickedFilteredSingleUser = userArray.find(
+    user => user.name === clickedName
+  );
+
+  /* Start: All button handlers */
   //handles click on visit website
   function onClickVisitWebsite() {
-    window.open(`${checkClickedUser[0].website}`, "_blank");
+    window.open(`${clickedFilteredSingleUser.website}`, "_blank");
   }
   //handles click on email send
   function onClickEmail() {
-    window.location.href = `mailto:${checkClickedUser[0].email}?subject=Hi from contacto!&body=Type%20your%20message`;
+    window.location.href = `mailto:${clickedFilteredSingleUser.email}?subject=Hi from contacto!&body=Type%20your%20message`;
   }
   //handles click on call phone
   function onClickCallPhone() {
-    window.open(`tel:${checkClickedUser[0].phone}`);
+    window.open(`tel:${clickedFilteredSingleUser.phone}`);
   }
   // function click on calculate google maps route
   function onClickGooglemaps() {
     window.open(
-      `https://www.google.de/maps/dir/${checkLoggedInUser[0].address}/${checkClickedUser[0].address}`,
+      `https://www.google.de/maps/dir/${ownProfileUser.address}/${clickedFilteredSingleUser.address}`,
       "_blank"
     );
   }
+  /* End: All button handlers */
+
+  /* Start: Update User Data */
+
+  // this updates the data in the user data array
+  // Form Submit Logic with Formik library for React (Textareas)
+  const {handleSubmit, handleChange, values} = useFormik({
+    initialValues: clickedFilteredSingleUser,
+    enableReinitialize: true,
+    onSubmit: values => {
+      onUpdateUser(values);
+      onClickedUserName(values.name);
+      alert("Contact profile successfully updated.");
+    },
+  });
+  // Image Logic Update Logic
+  function handleImgClicked() {
+    let imgUrlVar = window.prompt(
+      "Please enter a url for your image: (new image will be shown on button update)",
+      "http://imageurl.com"
+    );
+    values.image = imgUrlVar;
+  }
+  /* End: Update User Data */
 
   return (
     <>
       <h6>Login/My Contacts/Contact Profile</h6>
-      {checkClickedUser.map(user => {
-        return (
-          <ContainerSection key={`key-section-${user.id}`}>
-            <ContainerLottie>
-              <Lottie
-                options={lottieConfig(animationData)}
-                height="5rem"
-                width="5rem"
-              />
-            </ContainerLottie>
-            <ContainerProfileImage
-              src={user.image}
-              alt={user.name}
-              height="50vh"
-              width="50vw"
+      {clickedFilteredSingleUser ? (
+        <ContainerForm
+          key={`key-section-${clickedFilteredSingleUser.id}`}
+          onSubmit={handleSubmit}
+        >
+          <ContainerLottie>
+            <Lottie
+              options={lottieConfig(animationData)}
+              height="5rem"
+              width="5rem"
             />
-            <ContainerDivFlex>
-              <ContainerTextareaName disabled value={user.name} />
-            </ContainerDivFlex>
-            <ContainerDivFlex>
-              <ContainerTextareaAddress disabled value={user.address} />
-              <ContainerButtonRouteGooglemaps
-                onClick={onClickGooglemaps}
-              ></ContainerButtonRouteGooglemaps>
-            </ContainerDivFlex>
-            <ContainerDivFlex>
-              <ContainerTextareaEmail disabled value={user.email} />
-              <ContainerButtonSendEmail
-                onClick={onClickEmail}
-              ></ContainerButtonSendEmail>
-            </ContainerDivFlex>
-            <ContainerDivFlex>
-              <ContainerTextareaPhone disabled value={user.phone} />
-              <ContainerButtonPhone
-                onClick={onClickCallPhone}
-              ></ContainerButtonPhone>
-            </ContainerDivFlex>
-            <ContainerDivFlex>
-              <ContainerTextareaWebsite disabled value={user.website} />
-              <ContainerButtonVisitWebsite
-                onClick={onClickVisitWebsite}
-              ></ContainerButtonVisitWebsite>
-            </ContainerDivFlex>
-            <ContainerButtonEdit>Edit</ContainerButtonEdit>
-          </ContainerSection>
-        );
-      })}
+          </ContainerLottie>
+          <ContainerProfileImage
+            src={values ? values.image : ""}
+            alt={values ? values.name : "No image found"}
+            onClick={handleImgClicked}
+            height="50vh"
+            width="50vw"
+          />
+          <ContainerDivFlex>
+            <ContainerTextareaName
+              value={values ? values.name : "Awaiting data ..."}
+              name="name"
+              onChange={handleChange}
+            />
+          </ContainerDivFlex>
+          <ContainerDivFlex>
+            <ContainerTextareaAddress
+              value={values ? values.address : "Awaiting data ..."}
+              name="address"
+              onChange={handleChange}
+            />
+            <ContainerButtonRouteGooglemaps
+              onClick={onClickGooglemaps}
+            ></ContainerButtonRouteGooglemaps>
+          </ContainerDivFlex>
+          <ContainerDivFlex>
+            <ContainerTextareaEmail
+              value={values ? values.email : "Awaiting data ..."}
+              name="email"
+              onChange={handleChange}
+            />
+            <ContainerButtonSendEmail
+              onClick={onClickEmail}
+            ></ContainerButtonSendEmail>
+          </ContainerDivFlex>
+          <ContainerDivFlex>
+            <ContainerTextareaPhone
+              value={values ? values.phone : "Awaiting data ..."}
+              name="phone"
+              onChange={handleChange}
+            />
+            <ContainerButtonPhone
+              onClick={onClickCallPhone}
+            ></ContainerButtonPhone>
+          </ContainerDivFlex>
+          <ContainerDivFlex>
+            <ContainerTextareaWebsite
+              value={values ? values.website : "Awaiting data ..."}
+              name="website"
+              onChange={handleChange}
+            />
+            <ContainerButtonVisitWebsite
+              onClick={onClickVisitWebsite}
+            ></ContainerButtonVisitWebsite>
+          </ContainerDivFlex>
+          <ContainerButtonUpdate type="submit">Update</ContainerButtonUpdate>
+        </ContainerForm>
+      ) : (
+        <p>No user logged in.</p>
+      )}
     </>
   );
 };
 
-export default singleProfile;
+export default SingleProfile;
 
 const ContainerTextarea = styled(ContainerParentTextarea)`
   border-top-left-radius: 1.5rem;
@@ -114,7 +166,7 @@ const ContainerMainButton = styled.button`
     border: 3px solid #cff5e7;
   }
 `;
-const ContainerSection = styled.section`
+const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,7 +201,7 @@ const ContainerTextareaWebsite = styled(ContainerTextarea)`
 `;
 const ContainerProfileImage = styled(ContainerParentProfileImage)``;
 
-const ContainerButtonEdit = styled(ContainerParentButton)`
+const ContainerButtonUpdate = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_edit.svg");
 `;
 const ContainerDivFlex = styled.div`
