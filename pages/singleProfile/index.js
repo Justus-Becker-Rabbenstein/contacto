@@ -8,15 +8,15 @@ import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
 const SingleProfile = ({
-  userArray,
+  users,
   loginName,
   clickedName,
   onClickedUserName,
   onUpdateUser,
 }) => {
   // find logged in User and the clicked user from my contacts
-  const ownProfileUser = userArray.find(user => user.name === loginName);
-  const clickedFilteredSingleUser = userArray.find(
+  const ownProfileUser = users.find(user => user.name === loginName);
+  const clickedFilteredSingleUser = users.find(
     user => user.name === clickedName
   );
 
@@ -102,6 +102,7 @@ const SingleProfile = ({
             />
             <ContainerButtonRouteGooglemaps
               onClick={onClickGooglemaps}
+              type="button"
             ></ContainerButtonRouteGooglemaps>
           </ContainerDivFlex>
           <ContainerDivFlex>
@@ -112,6 +113,7 @@ const SingleProfile = ({
             />
             <ContainerButtonSendEmail
               onClick={onClickEmail}
+              type="button"
             ></ContainerButtonSendEmail>
           </ContainerDivFlex>
           <ContainerDivFlex>
@@ -122,6 +124,7 @@ const SingleProfile = ({
             />
             <ContainerButtonPhone
               onClick={onClickCallPhone}
+              type="button"
             ></ContainerButtonPhone>
           </ContainerDivFlex>
           <ContainerDivFlex>
@@ -132,6 +135,7 @@ const SingleProfile = ({
             />
             <ContainerButtonVisitWebsite
               onClick={onClickVisitWebsite}
+              type="button"
             ></ContainerButtonVisitWebsite>
           </ContainerDivFlex>
           <ContainerButtonUpdate type="submit">Update</ContainerButtonUpdate>

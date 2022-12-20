@@ -1,26 +1,20 @@
 import GlobalStyles from "../styles/GlobalStyles";
 import {useState} from "react";
-import {dbArray} from "../_db/dbArray";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function MyApp({Component, pageProps}) {
-  /* 
-  Notes:
-  localStorage
-  https://github.com/pixelass/local-storage-next/blob/main/hooks/useLocalStorage.js
-*/
-
-  // this state saves the user name in the login screen
-  const [loginName, setLoginName] = useState("User name");
+  // USE STATE
   /* Saves the user name that is clicked in pages/myContacts to 
 be able to compare it to userarray for displaying a single user */
   const [clickedName, setClickedName] = useState("");
   // bool value to conditionally render navbar burger menu
   const [menuClickStatus, setOnMenuClickStatus] = useState(false);
-  // imports userarray from _/db/dbArray.js into state
-  const [userArray, setUserArray] = useState(dbArray);
+  // bool value to conditionally render login page help
+  const [loginPagerenderHelp, setLoginPagerenderHelp] = useState(false);
 
+  // STATE UPLIFTING
   // State uplifting: Saves the username from login screen pages/index.js
   const handleSubmitLogin = onSubmitLogin => {
     setLoginName(onSubmitLogin);
@@ -35,12 +29,12 @@ be able to compare it to userarray for displaying a single user */
   }
   // State uplifting: setter userarray new user add
   const handleNewUserArrayValue = onClickedAddUser => {
-    setUserArray([...userArray, onClickedAddUser]);
+    setUsers([...users, onClickedAddUser]);
   };
   // State uplifting: setter userarry rewrite user on update
   const handleUpdateUser = updatedUser => {
-    setUserArray(
-      userArray.map(user => {
+    setUsers(
+      users.map(user => {
         if (user.id === updatedUser.id) {
           return updatedUser;
         } else {
@@ -49,6 +43,19 @@ be able to compare it to userarray for displaying a single user */
       })
     );
   };
+  // State uplifting: setter for conditonally render help in login page
+  function handleHelpClicked(onClickedHelp) {
+    setLoginPagerenderHelp(onClickedHelp);
+  }
+
+  // LOCAL STORAGE
+  // Saves all users
+  const [users, setUsers] = useLocalStorage("users", []);
+  // saves the user name in the login screen
+  const [loginName, setLoginName] = useLocalStorage(
+    "loggedInuser",
+    "User name"
+  );
 
   return (
     <>
@@ -62,11 +69,13 @@ be able to compare it to userarray for displaying a single user */
         {...pageProps}
         loginName={loginName}
         onSubmitLogin={handleSubmitLogin}
-        userArray={userArray}
         onClickedAddUser={handleNewUserArrayValue}
         clickedName={clickedName}
         onClickedUserName={handleUserNameClicked}
         onUpdateUser={handleUpdateUser}
+        loginPagerenderHelp={loginPagerenderHelp}
+        onClickedRenderHelp={handleHelpClicked}
+        users={users}
       />
       <Footer />
     </>

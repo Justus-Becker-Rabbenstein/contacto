@@ -3,8 +3,29 @@ import Link from "next/link";
 import Lottie from "react-lottie";
 import animationData from "../lotties/login_animation.json";
 import lottieConfig from "../hooks/lottieConfig";
+import {ContainerParentButton} from "../styles/styledButton";
+import {useState} from "react";
 
-export default function Home({loginName, onSubmitLogin}) {
+export default function Home({
+  loginName,
+  onSubmitLogin,
+  loginPagerenderHelp,
+  onClickedRenderHelp,
+}) {
+  // bool state from _app.js to conditionally render help
+  const [helperText, setHelperText] = useState("Help");
+  function handleHelpClicked() {
+    onClickedRenderHelp(!loginPagerenderHelp);
+    if (loginPagerenderHelp === false) {
+      setHelperText(`
+    First visit?
+  Open the burger menu and press add contact to create your own login name as well as your contacts.
+  After that, open the burger menu to logout and login as one of the users you created.`);
+    } else {
+      setHelperText("Help");
+    }
+  }
+
   return (
     <ContainerDiv>
       <ContainerHeadingOne>Login</ContainerHeadingOne>
@@ -23,6 +44,12 @@ export default function Home({loginName, onSubmitLogin}) {
         />
         <ContainerLink href="/myContacts">Login</ContainerLink>
       </ContainerForm>
+      <ContainerHelpButton
+        onClick={handleHelpClicked}
+        boolProp={loginPagerenderHelp}
+      >
+        {helperText}
+      </ContainerHelpButton>
     </ContainerDiv>
   );
 }
@@ -44,7 +71,7 @@ const ContainerForm = styled.form`
 
 const ContainerInput = styled.input`
   width: 15rem;
-  height: 2rem;
+  height: 2.5rem;
   margin-bottom: 10%;
 
   background: rgba(255, 255, 255, 0.1);
@@ -73,7 +100,7 @@ const ContainerLink = styled(Link)`
   align-items: center;
   justify-content: center;
   width: 15rem;
-  height: 2rem;
+  height: 2.5rem;
 
   background: rgba(255, 255, 255, 0.1);
   border-radius: 120px;
@@ -94,4 +121,10 @@ const ContainerLink = styled(Link)`
   &:hover {
     border: 3px solid #cff5e7;
   }
+`;
+const ContainerHelpButton = styled(ContainerParentButton)`
+  align-self: center;
+  width: 15rem;
+  margin-bottom: 1%;
+  height: ${props => (props.boolProp ? "8rem" : "2.5rem")};
 `;

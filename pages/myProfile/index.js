@@ -7,8 +7,8 @@ import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
-const MyProfile = ({loginName, onSubmitLogin, userArray, onUpdateUser}) => {
-  const ownProfileUser = userArray.find(user => user.name === loginName);
+const MyProfile = ({loginName, onSubmitLogin, users, onUpdateUser}) => {
+  const ownProfileUser = users.find(user => user.name === loginName);
 
   // this updates the data in the user data array
   // Form Submit Logic with Formik library for React (Textareas)

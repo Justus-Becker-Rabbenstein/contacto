@@ -7,7 +7,7 @@ import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
 
-const AddContact = ({userArray, onClickedAddUser}) => {
+const AddContact = ({users, onClickedAddUser}) => {
   // url of image of new profile
   const [imgUrl, setImgUrl] = useState("images/icon_addcontact/icon_image.svg");
 
@@ -22,7 +22,13 @@ const AddContact = ({userArray, onClickedAddUser}) => {
   // Submit Form
   function handleSubmit(event) {
     event.preventDefault();
-    const userArrayLength = userArray.length;
+    let userArrayLength;
+    if (users.map(p => p.id).length === 0) {
+      userArrayLength = 0;
+    } else {
+      userArrayLength = users.map(p => p.id).length;
+    }
+
     let toBeAddedObject = {
       id: userArrayLength + 1,
       name: event.target.name.value,
