@@ -5,13 +5,13 @@ import Lottie from "react-lottie";
 import animationData from "../../lotties/search.json";
 import lottieConfig from "../../hooks/lottieConfig";
 
-const MyContacts = ({userArray, onClickedUserName}) => {
+const MyContacts = ({users, onClickedUserName}) => {
   // useState Array for manipulation during search
-  const [userArraySearch, setUserArraySearch] = useState(userArray);
+  const [userArraySearch, setUserArraySearch] = useState(users);
 
   const onSearchInput = event => {
     const searchQueryLowerCase = event.target.value.toLowerCase();
-    const displayedItems = userArray.filter(user =>
+    const displayedItems = users.filter(user =>
       user.name.toLowerCase().startsWith(searchQueryLowerCase)
     );
     setUserArraySearch(displayedItems);
