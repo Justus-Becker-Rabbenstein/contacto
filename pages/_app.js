@@ -6,9 +6,6 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 function MyApp({Component, pageProps}) {
   // USE STATE
-  /* Saves the user name that is clicked in pages/myContacts to 
-be able to compare it to userarray for displaying a single user */
-  const [clickedName, setClickedName] = useState("");
   // bool value to conditionally render navbar burger menu
   const [menuClickStatus, setOnMenuClickStatus] = useState(false);
   // bool value to conditionally render login page help
@@ -53,9 +50,11 @@ be able to compare it to userarray for displaying a single user */
   const [users, setUsers] = useLocalStorage("users", []);
   // saves the user name in the login screen
   const [loginName, setLoginName] = useLocalStorage(
-    "loggedInuser",
+    "loggedInUser",
     "User name"
   );
+  /* selected User in 'My Contacts' dashboard to display single profile */
+  const [clickedName, setClickedName] = useLocalStorage("selectedContact", "");
 
   return (
     <>
