@@ -45,7 +45,11 @@ const MyContacts = ({users, onClickedUserName}) => {
           >
             <ContainerSection>
               <ContainerProfileImage
-                src={singleUser.image}
+                src={
+                  singleUser.image
+                    ? singleUser.image
+                    : "images/icon_addcontact/icon_image.svg"
+                }
                 alt={singleUser.name}
                 height="50vh"
                 width="50vw"

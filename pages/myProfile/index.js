@@ -6,6 +6,8 @@ import lottieConfig from "../../hooks/lottieConfig";
 import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
+import UploadWidget from "../../utils/UploadWidget";
+import {cloudImgUrl} from "../../utils/UploadWidget";
 
 const MyProfile = ({loginName, onSubmitLogin, users, onUpdateUser}) => {
   const ownProfileUser = users.find(user => user.name === loginName);
@@ -16,18 +18,19 @@ const MyProfile = ({loginName, onSubmitLogin, users, onUpdateUser}) => {
     initialValues: ownProfileUser,
     enableReinitialize: true,
     onSubmit: values => {
+      values.image = imgFunction();
       onSubmitLogin(values.name);
       onUpdateUser(values);
       alert("Own profile successfully updated.");
     },
   });
-  // Image Logic Update Logic
-  function handleImgClicked() {
-    let imgUrlVar = window.prompt(
-      "Please enter a url for your image: (new image will be shown on button update)",
-      "http://imageurl.com"
-    );
-    values.image = imgUrlVar;
+  // Logic for switching image based on new upload or same like before
+  function imgFunction() {
+    try {
+      return cloudImgUrl.info.url;
+    } catch (error) {
+      return values.image;
+    }
   }
 
   return (
@@ -46,8 +49,8 @@ const MyProfile = ({loginName, onSubmitLogin, users, onUpdateUser}) => {
           width="50vw"
           src={values ? values.image : ""}
           alt={values ? values.name : "No image found"}
-          onClick={handleImgClicked}
         />
+        <UploadWidget />
         <ContainerTextareaName
           value={values ? values.name : "Awaiting data ..."}
           name="name"

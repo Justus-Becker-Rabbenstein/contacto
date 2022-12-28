@@ -1,4 +1,3 @@
-import {useState} from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/addcontact.json";
@@ -6,38 +5,39 @@ import lottieConfig from "../../hooks/lottieConfig";
 import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
+import UploadWidget from "../../utils/UploadWidget";
+import {cloudImgUrl} from "../../utils/UploadWidget";
 
 const AddContact = ({users, onClickedAddUser}) => {
-  // url of image of new profile
-  const [imgUrl, setImgUrl] = useState("images/icon_addcontact/icon_image.svg");
-
-  function handleImgClicked() {
-    let imgUrlVar = window.prompt(
-      "Please enter a url for your image:",
-      "http://imageurl.com"
-    );
-    setImgUrl(imgUrlVar);
-  }
-
   // Submit Form
   function handleSubmit(event) {
     event.preventDefault();
+    let toBeAddedObject;
     let userArrayLength;
+    // depending on first launch set id to 1 or continue after 1
     if (users.map(p => p.id).length === 0) {
       userArrayLength = 0;
     } else {
       userArrayLength = users.map(p => p.id).length;
     }
-
-    let toBeAddedObject = {
+    // depending on if user uploaded picture put icon or new image
+    toBeAddedObject = {
       id: userArrayLength + 1,
       name: event.target.name.value,
       address: event.target.address.value,
       email: event.target.email.value,
       phone: event.target.phone.value,
       website: event.target.website.value,
-      image: imgUrl,
+      image: `${imgFunction()}`,
     };
+    function imgFunction() {
+      try {
+        return cloudImgUrl.info.url;
+      } catch (error) {
+        return "images/icon_addcontact/icon_image.svg";
+      }
+    }
+
     onClickedAddUser(toBeAddedObject);
     event.target.reset();
     alert("New contact saved.");
@@ -55,13 +55,17 @@ const AddContact = ({users, onClickedAddUser}) => {
           />
         </ContainerLottie>
         <ContainerProfileImage
-          src={imgUrl}
+          src={
+            cloudImgUrl == undefined
+              ? "images/icon_addcontact/icon_image.svg"
+              : cloudImgUrl.info.url
+          }
           alt=""
           height="50vh"
           width="50vw"
           name="image"
-          onClick={handleImgClicked}
         />
+        <UploadWidget />
         <ContainerTextareaName name="name" placeholder="Enter name" />
         <ContainerTextareaAddress name="address" placeholder="Enter address" />
         <ContainerInputEmail

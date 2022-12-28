@@ -6,6 +6,8 @@ import {useFormik} from "formik";
 import {ContainerParentTextarea} from "../../styles/styledTextarea";
 import {ContainerParentButton} from "../../styles/styledButton";
 import {ContainerParentProfileImage} from "../../styles/styledProfileImage";
+import UploadWidget from "../../utils/UploadWidget";
+import {cloudImgUrl} from "../../utils/UploadWidget";
 
 const SingleProfile = ({
   users,
@@ -50,18 +52,19 @@ const SingleProfile = ({
     initialValues: clickedFilteredSingleUser,
     enableReinitialize: true,
     onSubmit: values => {
+      values.image = imgFunction();
       onUpdateUser(values);
       onClickedUserName(values.name);
       alert("Contact profile successfully updated.");
     },
   });
-  // Image Logic Update Logic
-  function handleImgClicked() {
-    let imgUrlVar = window.prompt(
-      "Please enter a url for your image: (new image will be shown on button update)",
-      "http://imageurl.com"
-    );
-    values.image = imgUrlVar;
+  // Logic for switching image based on new upload or same like before
+  function imgFunction() {
+    try {
+      return cloudImgUrl.info.url;
+    } catch (error) {
+      return values.image;
+    }
   }
   /* End: Update User Data */
 
@@ -83,10 +86,10 @@ const SingleProfile = ({
           <ContainerProfileImage
             src={values ? values.image : ""}
             alt={values ? values.name : "No image found"}
-            onClick={handleImgClicked}
             height="50vh"
             width="50vw"
           />
+          <UploadWidget />
           <ContainerDivFlex>
             <ContainerTextareaName
               value={values ? values.name : "Awaiting data ..."}

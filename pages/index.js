@@ -27,30 +27,32 @@ export default function Home({
   }
 
   return (
-    <ContainerDiv>
-      <ContainerHeadingOne>Login</ContainerHeadingOne>
-      <Lottie
-        options={lottieConfig(animationData)}
-        height="100px"
-        width="100px"
-      />
-      <ContainerForm>
-        <ContainerInput
-          placeholder={loginName}
-          type="text"
-          onChange={e => {
-            onSubmitLogin(e.currentTarget.value);
-          }}
+    <>
+      <ContainerDiv>
+        <ContainerHeadingOne>Login</ContainerHeadingOne>
+        <Lottie
+          options={lottieConfig(animationData)}
+          height="100px"
+          width="100px"
         />
-        <ContainerLink href="/myContacts">Login</ContainerLink>
-      </ContainerForm>
-      <ContainerHelpButton
-        onClick={handleHelpClicked}
-        boolProp={loginPagerenderHelp}
-      >
-        {helperText}
-      </ContainerHelpButton>
-    </ContainerDiv>
+        <ContainerForm>
+          <ContainerInput
+            placeholder={loginName}
+            type="text"
+            onChange={e => {
+              onSubmitLogin(e.currentTarget.value);
+            }}
+          />
+          <ContainerLink href="/myContacts">Login</ContainerLink>
+        </ContainerForm>
+        <ContainerHelpButton
+          onClick={handleHelpClicked}
+          boolProp={loginPagerenderHelp}
+        >
+          {helperText}
+        </ContainerHelpButton>
+      </ContainerDiv>
+    </>
   );
 }
 
