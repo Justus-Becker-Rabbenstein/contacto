@@ -3,6 +3,7 @@ import {useState} from "react";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import useLocalStorage from "../hooks/useLocalStorage";
+import Script from "next/script";
 
 function MyApp({Component, pageProps}) {
   // USE STATE
@@ -59,6 +60,8 @@ function MyApp({Component, pageProps}) {
   return (
     <>
       <GlobalStyles />
+      {/* Writes cloudinary upload script into <head> */}
+      <Script src="https://upload-widget.cloudinary.com/global/all.js" />
       <Header
         menuClickStatus={menuClickStatus}
         onNavbarClick={handleNavbarClick}
