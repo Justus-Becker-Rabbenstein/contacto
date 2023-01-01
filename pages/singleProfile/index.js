@@ -15,6 +15,7 @@ const SingleProfile = ({
   clickedName,
   onClickedUserName,
   onUpdateUser,
+  onClickDeleteUser,
 }) => {
   // find logged in User and the clicked user from my contacts
   const ownProfileUser = users.find(user => user.name === loginName);
@@ -67,6 +68,19 @@ const SingleProfile = ({
     }
   }
   /* End: Update User Data */
+
+  /* Start: Delete User */
+  function handleDelete() {
+    // method confirm returns true if ok and false if cancel, needed for if
+    const confirmVar = confirm(
+      "Do you wish to delete currently selected contact?"
+    );
+    if (confirmVar === true) {
+      onClickDeleteUser(clickedFilteredSingleUser.id);
+      alert("User successfully deleted.");
+    }
+  }
+  /* End: Delete User */
 
   return (
     <>
@@ -141,10 +155,15 @@ const SingleProfile = ({
               type="button"
             ></ContainerButtonVisitWebsite>
           </ContainerDivFlex>
-          <ContainerButtonUpdate type="submit">Update</ContainerButtonUpdate>
+          <ContainerDivButtonWrapper>
+            <ContainerButtonUpdate type="submit">Update</ContainerButtonUpdate>
+            <ContainerButtonDelete type="button" onClick={handleDelete}>
+              Delete
+            </ContainerButtonDelete>
+          </ContainerDivButtonWrapper>
         </ContainerForm>
       ) : (
-        <p>No user logged in.</p>
+        <p>No contact data found.</p>
       )}
     </>
   );
@@ -210,6 +229,14 @@ const ContainerProfileImage = styled(ContainerParentProfileImage)``;
 
 const ContainerButtonUpdate = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_edit.svg");
+  width: 7rem;
+`;
+const ContainerButtonDelete = styled(ContainerParentButton)`
+  background-image: url("images/icon_singleprofile_buttons/icon_delete.svg");
+  width: 7rem;
+`;
+const ContainerDivButtonWrapper = styled.div`
+  display: flex;
 `;
 const ContainerDivFlex = styled.div`
   display: flex;
