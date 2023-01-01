@@ -45,6 +45,10 @@ function MyApp({Component, pageProps}) {
   function handleHelpClicked(onClickedHelp) {
     setLoginPagerenderHelp(onClickedHelp);
   }
+  // State uplifting: delete single user from local storage
+  const deleteUser = id => {
+    setUsers(users.filter(user => user.id !== id));
+  };
 
   // LOCAL STORAGE
   // Saves all users
@@ -78,6 +82,7 @@ function MyApp({Component, pageProps}) {
         loginPagerenderHelp={loginPagerenderHelp}
         onClickedRenderHelp={handleHelpClicked}
         users={users}
+        onClickDeleteUser={deleteUser}
       />
       <Footer />
     </>
