@@ -230,6 +230,7 @@ const ContainerProfileImage = styled(ContainerParentProfileImage)``;
 const ContainerButtonUpdate = styled(ContainerParentButton)`
   background-image: url("images/icon_buttons/button_edit.svg");
   width: 7rem;
+  margin-right: 1rem;
 `;
 const ContainerButtonDelete = styled(ContainerParentButton)`
   background-image: url("images/icon_singleprofile_buttons/icon_delete.svg");
