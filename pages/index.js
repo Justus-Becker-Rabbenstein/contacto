@@ -3,29 +3,8 @@ import Link from "next/link";
 import Lottie from "react-lottie";
 import animationData from "../lotties/login_animation.json";
 import lottieConfig from "../hooks/lottieConfig";
-import {ContainerParentButton} from "../styles/styledButton";
-import {useState} from "react";
 
-export default function Home({
-  loginName,
-  onSubmitLogin,
-  loginPagerenderHelp,
-  onClickedRenderHelp,
-}) {
-  // bool state from _app.js to conditionally render help
-  const [helperText, setHelperText] = useState("Help");
-  function handleHelpClicked() {
-    onClickedRenderHelp(!loginPagerenderHelp);
-    if (loginPagerenderHelp === false) {
-      setHelperText(`
-    First visit?
-  Open the burger menu and press add contact to create your own login name as well as your contacts.
-  After that, open the burger menu to logout and login as one of the users you created.`);
-    } else {
-      setHelperText("Help");
-    }
-  }
-
+export default function Home({loginName, onSubmitLogin}) {
   return (
     <>
       <ContainerDiv>
@@ -45,12 +24,13 @@ export default function Home({
           />
           <ContainerLink href="/myContacts">Login</ContainerLink>
         </ContainerForm>
-        <ContainerHelpButton
-          onClick={handleHelpClicked}
-          boolProp={loginPagerenderHelp}
-        >
-          {helperText}
-        </ContainerHelpButton>
+        <ContainerHelptextDiv>
+          First visit?
+          <hr />
+          Open the burger menu and press add contact to create your own login
+          name as well as your contacts. After that, open the burger menu to
+          logout and login as one of the users you created.
+        </ContainerHelptextDiv>
       </ContainerDiv>
     </>
   );
@@ -124,9 +104,17 @@ const ContainerLink = styled(Link)`
     border: 3px solid #cff5e7;
   }
 `;
-const ContainerHelpButton = styled(ContainerParentButton)`
+const ContainerHelptextDiv = styled.div`
+  display: flex;
+  flex-direction: column;
   align-self: center;
   width: 15rem;
-  margin-bottom: 1%;
-  height: ${props => (props.boolProp ? "8rem" : "2.5rem")};
+  margin-top: 10%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.2px);
+  -webkit-backdrop-filter: blur(2.2px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 `;

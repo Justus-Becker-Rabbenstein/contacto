@@ -9,8 +9,6 @@ function MyApp({Component, pageProps}) {
   // USE STATE
   // bool value to conditionally render navbar burger menu
   const [menuClickStatus, setOnMenuClickStatus] = useState(false);
-  // bool value to conditionally render login page help
-  const [loginPagerenderHelp, setLoginPagerenderHelp] = useState(false);
 
   // STATE UPLIFTING
   // State uplifting: Saves the username from login screen pages/index.js
@@ -41,10 +39,6 @@ function MyApp({Component, pageProps}) {
       })
     );
   };
-  // State uplifting: setter for conditonally render help in login page
-  function handleHelpClicked(onClickedHelp) {
-    setLoginPagerenderHelp(onClickedHelp);
-  }
   // State uplifting: delete single user from local storage
   const deleteUser = id => {
     setUsers(users.filter(user => user.id !== id));
@@ -79,8 +73,6 @@ function MyApp({Component, pageProps}) {
         clickedName={clickedName}
         onClickedUserName={handleUserNameClicked}
         onUpdateUser={handleUpdateUser}
-        loginPagerenderHelp={loginPagerenderHelp}
-        onClickedRenderHelp={handleHelpClicked}
         users={users}
         onClickDeleteUser={deleteUser}
       />
