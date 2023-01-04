@@ -21,7 +21,7 @@ const ContainerFooter = styled.footer`
   left: 0;
   bottom: 0.1rem;
   width: 100%;
-  height: 1.4rem;
+  height: 2rem;
   text-align: center;
 
   background: rgba(255, 255, 255, 0.1);
