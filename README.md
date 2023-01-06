@@ -21,11 +21,15 @@ This app is optimized for mobile usage, so it is best seen in responsive mode
 
 ## App impressions
 
-<div align="center">
-  <img src="./public/images/README/gifdata.gif"
-     height="200rem"/>
-       <img src="./public/images/README/preview_gifdata_gif.gif"
-     height="200rem"/>
+<div style="display: flex;">
+<div style="text-align: center;">
+<h3>How to get help</h3>
+<img src="./public/images/README/gifdata.gif" height="200rem"/>
+</div>
+<div style="text-align: center;">
+<h3>Editing contacts</h3>
+<img src="./public/images/README/preview_gifdata_gif.gif" height="200rem"/>
+</div>
 </div>
 
 ---
