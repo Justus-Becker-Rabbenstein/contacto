@@ -1,108 +1,59 @@
-# Capstone-Project-Template for Octopodes
+## contacto
 
-- Next.js project created with `create-next-app`
-- [Default Styling (with CSS Modules) has been removed](#styling)
-- [Styled Components support added](#styling)
-- [Mongoose connectivity support added](#mongoose-connectivity)
-- [Storybook support added](#storybook)
-- [ESLint config added](#eslint)
-- [React Testing Library & Jest support added](#testing)
-- [Prettier config added](#prettier)
+<div align="center">
+  <img src="./public/images/icon_header/mascot.svg"
+     height="10%"/>
+</div>
 
-## Getting Started
+This App - contacto - is meant for saving your contacts as well as providing
+addiontal useful functions.
 
-Run the development server:
+These functions include: Google Maps route calculation, sending an email,
+calling and visiting the website of your contact.
 
-```bash
-npm run dev
-```
+contacto was developed as capstone project in a four weeks time frame for
+neuefische Web Development Bootcamp.
 
-Open [http://localhost:3000](http://localhost:3000) to see the result.
+This app is optimized for mobile usage, so it is best seen in responsive mode
+(e.g. iPhone SE).
 
-Run Storybook:
+---
 
-```bash
-npm run storybook
-```
+## App impressions
 
-Open [http://localhost:6006](http://localhost:6006) to inspect your components
-with Storybook.
+<div style="display: flex;">
+<div style="text-align: center;">
+<h3>How to get help</h3>
+<img src="./public/images/README/gifdata.gif" height="200rem"/>
+</div>
+<div style="text-align: center;">
+<h3>Editing contacts</h3>
+<img src="./public/images/README/preview_gifdata_gif.gif" height="200rem"/>
+</div>
+</div>
 
-Run tests:
+---
 
-```bash
-npm run test
-# or
-npm run test:watch
-```
+## Tech stack
 
-## Styling
+- Next.js <img src="./public/images/README/nextjs.svg">
+- React <img src="./public/images/README/react.svg">
+- styled-components <img src="./public/images/README/styledcomponents.svg">
+- formik <img src="./public/images/README/formik.svg" height="15rem" >
+- cloudinary for image data storage
+  <img src="./public/images/README/cloudinary.svg">
 
-We removed the Next.js default styles and added Styled Components support.
+---
 
-You can find an initial [`GobalStyles.js`](/styles/GlobalStyles.js) in the
-`/styles` directory. Storybook is already configured to respect styles from
-`GlobalStyles.js`
+## How to set it up
 
-## Mongoose connectivity
-
-We added a mongoose connection helper function in
-[`/pages/api/_db/connect-db.js`](/pages/api/_db/connect-db.js).
-
-Please remember to wrap your API route handler functions with the `connectDB()`
-helper when exporting:
-
-```
-export default connectDB(handler);
-```
-
-To use your own DB, create a `.env.local` file and add your connection string as
-shown in [`.env.local.example`](/.env.local.example). Please remember to add
-your database name at the end of the connection string.
-
-We prepared a demo API route handler
-[`pages/api/octopodes.js`](/pages/api/octopodes.js) and some demo data in the
-[`/_data`](/_data) folder. Additionally there is a mongoose model for the demo
-data in [`/pages/api/_db/models`](/pages/api/_db/models). This is just for
-demonstration purposes - create your own data and models following this pattern.
-
-## Storybook
-
-We created a demo component
-[`/components/OctopusCard.js`](/components/OctopusCard.js) and corresponding
-stories. Create your own stories following this pattern.
-
-## ESLint
-
-You can run ESLint from the terminal by typing
-
-```bash
-npm run lint
-```
-
-Please make sure that there are no linter errors before pushing to Github. Your
-pull requests will report failed code quality checks otherwise.
-
-## Testing
-
-Please write your tests in the [`/__tests__`](/__tests__/) folder instead of
-placing them next to your components. Next.js does not allow test files in its
-`/pages` directory.
-
-We prepared a demo test that tests if the Homepage renders a 🐙.
-
-Please make sure that all tests pass before pushing to Github. Your pull
-requests will report failed test runs otherwise.
-
-## Prettier
-
-We added a [Prettier configuration file](/.prettierrc) with basic formatting
-rules. Feel free to edit these rules to your taste.
-
-You can check the formatting of your files with `npm run prettier`
-
-You can auto format all files in the project by calling
-`npm run prettier:write`.
-
-Please make sure that your code passes the prettier check before pushing to
-Github. Your pull requests will report failed code quality checks otherwise.
+| Instruction                           |                    Command                     |
+| ------------------------------------- | :--------------------------------------------: |
+| clone this repository                 |                                                |
+| install all npm dependencies          |                 `npm install`                  |
+| to run the app in development mode    |                 `npm run dev`                  |
+| open in browser                       | [http://localhost:3000](http://localhost:3000) |
+| to run lint                           |                 `npm run lint`                 |
+| to run prettier                       |            `npm run prettier:write`            |
+| to run React Testing Library & Jest   |                 `npm run test`                 |
+| to create a build ready for deploying |                `npm run build`                 |
