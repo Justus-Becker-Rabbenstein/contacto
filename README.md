@@ -52,8 +52,6 @@ This app is optimized for mobile usage, so it is best seen in responsive mode
    `npm install`
 - to run the app in development mode `npm run dev`
 - open [http://localhost:3000](http://localhost:3000) to view it in the browser
-- to run Storybook  
-  `npm run storybook`
 - to run lint `npm run lint`
 - to run prettier: `npm run prettier:write`
 - to run React Testing Library & Jest  
