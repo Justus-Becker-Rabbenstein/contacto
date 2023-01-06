@@ -47,13 +47,13 @@ This app is optimized for mobile usage, so it is best seen in responsive mode
 
 ## How to set it up
 
-- clone this repository
-- install all npm dependencies  
-   `npm install`
-- to run the app in development mode `npm run dev`
-- open [http://localhost:3000](http://localhost:3000) to view it in the browser
-- to run lint `npm run lint`
-- to run prettier: `npm run prettier:write`
-- to run React Testing Library & Jest  
-  `npm test`
-- to create a build ready for deploying: `npm run build`
+| Instruction                           |                    Command                     |
+| ------------------------------------- | :--------------------------------------------: |
+| clone this repository                 |                                                |
+| install all npm dependencies          |                 `npm install`                  |
+| to run the app in development mode    |                 `npm run dev`                  |
+| open in browser                       | [http://localhost:3000](http://localhost:3000) |
+| to run lint                           |                 `npm run lint`                 |
+| to run prettier                       |            `npm run prettier:write`            |
+| to run React Testing Library & Jest   |                 `npm run test`                 |
+| to create a build ready for deploying |                `npm run build`                 |
