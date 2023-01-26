@@ -1,6 +1,6 @@
 ## Demo
 
-<a href="https://contacto-ten.vercel.app/" target="_blank">Live Deployment</a>
+[Live Deployment](https://contacto-ten.vercel.app/ "Live Deployment Link")
 
 ## contacto
 
