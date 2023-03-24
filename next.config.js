@@ -7,6 +7,10 @@ const nextConfig = {
   eslint: {
     dirs: ["pages", "components", "styles"],
   },
+  env: {
+    cloudinaryCloudName: process.env.API_CloudinaryCloudName,
+    cloudinaryUploadPreset: process.env.API_CloudinaryUploadPreset,
+  },
 };
 
 module.exports = nextConfig;

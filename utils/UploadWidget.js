@@ -12,8 +12,8 @@ const UploadWidget = () => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: "dkbaclwko",
-        uploadPreset: "azsog7ys",
+        cloudName: process.env.cloudinaryCloudName,
+        uploadPreset: process.env.cloudinaryUploadPreset,
       },
       function (error, result) {
         if (result.event == "success") {
