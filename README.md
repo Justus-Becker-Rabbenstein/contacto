@@ -1,6 +1,7 @@
 ## Demo
 
 [Live Deployment](https://contacto-ten.vercel.app/ "Live Deployment Link")
+=> deployment disabled due to node version deprecation
 
 ## contacto
 
